@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Accordion, AccordionItem, Selection } from "@nextui-org/react";
-import Card2 from "@/components/energy-card";
+import EnergyForm from "@/components/energy-card";
 
 import CSS from "csstype";
 import { useState } from "react";
@@ -144,7 +144,6 @@ export const ManualSettings = () => {
         fullWidth
         variant="light"
         itemClasses={itemClasses}
-
         defaultExpandedKeys={["1"]}
         motionProps={{
           variants: {
@@ -227,7 +226,27 @@ export const ManualSettings = () => {
         >
           <div style={innerStyle}>
             {/* ENERGY FORM GOES HERE---------------------------------------------------------------*/}
-            <Card2 />
+            <EnergyForm
+              naturalGas={naturalGas}
+              setNaturalGas={handleNaturalGas}
+              naturalGasUnit={naturalGasUnit}
+              setNaturalGasUnit={setNaturalGasUnit}
+              electricityBill={electricityBill}
+              setElectricityBill={handleElectricityBill}
+              electricityBillUnit={electricityBillUnit}
+              setElectricityBillUnit={setElectricityBillUnit}
+              isGreenEnergyHouse={isGreenEnergyHouse}
+              setIsGreenEnergyHouse={setIsGreenEnergyHouse}
+              fuelOil={fuelOil}
+              setFuelOil={handleFuelOil}
+              fuelOilUnit={fuelOilUnit}
+              setFuelOilUnit={setFuelOilUnit}
+              propane={propane}
+              setPropane={handlePropane}
+              propaneUnit={propaneUnit}
+              setPropaneUnit={setPropaneUnit}
+              submitForm={handleEnergySubmit}
+            />
           </div>
         </AccordionItem>
         <AccordionItem

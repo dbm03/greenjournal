@@ -1,4 +1,10 @@
-import {Checkbox,Spacer,Select,SelectItem,Button} from "@nextui-org/react";
+import {
+  Checkbox,
+  Spacer,
+  Select,
+  SelectItem,
+  Button,
+} from "@nextui-org/react";
 import { OtherFormProps } from "./manualsettings";
 
 const OtherForm = ({
@@ -20,9 +26,27 @@ const OtherForm = ({
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <p className="text-small text-default-500">Lifestyle</p>
-          <Checkbox color="success">I am vegetarian.</Checkbox>
-          <Checkbox color="success">I use a low flow showerhead.</Checkbox>
-          <Checkbox color="success">I volunteer for environmental projects.</Checkbox>
+          <Checkbox
+            color="success"
+            isSelected={isVegetarian}
+            onValueChange={setIsVegetarian}
+          >
+            I am vegetarian.
+          </Checkbox>
+          <Checkbox
+            color="success"
+            isSelected={lowFlowShowerhead}
+            onValueChange={setLowFlowShowerhead}
+          >
+            I use a low flow showerhead.
+          </Checkbox>
+          <Checkbox
+            color="success"
+            isSelected={isVolunteer}
+            onValueChange={setIsVolunteer}
+          >
+            I volunteer for environmental projects.
+          </Checkbox>
           <p className="text-small text-default-500">
             <em>(i.e. conservation efforts, planting trees)</em>
           </p>
@@ -32,13 +56,27 @@ const OtherForm = ({
             className="max-w-xs"
             label="I shop for non-essential products..."
             defaultSelectedKeys={["sometimes"]}
+            selectedKeys={shoppingHabits}
+            onSelectionChange={setShoppingHabits}
           >
             <SelectItem key="rarely">Rarely</SelectItem>
             <SelectItem key="sometimes">Sometimes</SelectItem>
             <SelectItem key="often">Often</SelectItem>
           </Select>
-          <Checkbox color="success">I frequently buy recycled/reused products.</Checkbox>
-          <Checkbox color="success">I buy organic, locally-sourced produce.</Checkbox>
+          <Checkbox
+            color="success"
+            isSelected={isRecycledProducts}
+            onValueChange={setIsRecycledProducts}
+          >
+            I frequently buy recycled/reused products.
+          </Checkbox>
+          <Checkbox
+            color="success"
+            isSelected={isOrganicProduce}
+            onValueChange={setIsOrganicProduce}
+          >
+            I buy organic, locally-sourced produce.
+          </Checkbox>
           <Spacer />
         </div>
         <Button color="success">Save Changes</Button>
