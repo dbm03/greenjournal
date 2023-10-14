@@ -34,14 +34,14 @@ const TransportationForm = ({
             <Input
               label="Miles/Week"
               type="number"
-              className="max-w-[170px]"
+              className="max-w-[200px]"
               value={milesPerWeekVehicle}
               onChange={(e) => setMilesPerWeekVehicle(e.target.value)}
             />
             <Input
               label="Miles/Gallon"
               type="number"
-              className="max-w-[170px]"
+              className="max-w-[200px]"
               value={milesPerGallon}
               onChange={(e) => setMilesPerGallon(e.target.value)}
             />
@@ -56,8 +56,6 @@ const TransportationForm = ({
         <div className="flex flex-col gap-2">
           <div className="flex flex-wrap items-end w-full gap-4 mb-6 md:flex-nowrap md:mb-0">
             <div className="flex flex-col gap-2">
-            <p className="text-small text-default-500">Public Transportation</p>
-            <Input label="Miles/Week" className="max-w-[200px]" />
               <p className="text-small text-default-500">
                 Public Transportation
               </p>
@@ -68,7 +66,7 @@ const TransportationForm = ({
                 onChange={(e) =>
                   setMilesPerWeekPublicTransportation(e.target.value)
                 }
-                className="max-w-[170px]"
+                className="max-w-[200px]"
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -78,7 +76,7 @@ const TransportationForm = ({
                 type="number"
                 value={flightsPerYear}
                 onChange={(e) => setFlightsPerYear(e.target.value)}
-                className="max-w-[170px]"
+                className="max-w-[200px]"
               />
             </div>
           </div>
