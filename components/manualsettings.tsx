@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Accordion, AccordionItem, Selection } from "@nextui-org/react";
-import { MonitorMobileIcon } from "./MonitorMobileIcon";
 import Card2 from "@/components/energy-card";
 import Card3 from "@/components/waste-card";
 import Card4 from "@/components/other-card";
@@ -9,6 +8,11 @@ import CSS from "csstype";
 import { useState } from "react";
 import TransportationForm from "./transportation-card";
 import WasteForm from "@/components/waste-card";
+
+import {CarIcon} from "./CarIcon.jsx";
+import {EnergyIcon} from "./EnergyIcon.jsx";
+import {WasteIcon} from "./WasteIcon.jsx";
+import {OtherIcon} from "./OtherIcon.jsx";
 
 export interface WasteFormProps {
   trashPerWeek: string;
@@ -123,7 +127,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="1"
           aria-label="Transportation"
-          startContent={<MonitorMobileIcon className="text-success" />}
+          startContent={<CarIcon className="text-success" />}
           subtitle={
             <p className="flex">
               <em>driving and traveling</em>
@@ -154,7 +158,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="2"
           aria-label="Home Energy"
-          startContent={<MonitorMobileIcon className="text-success" />}
+          startContent={<EnergyIcon className="text-success" />}
           subtitle={
             <p className="flex">
               <em>energy efficiency and use</em>
@@ -170,7 +174,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="3"
           aria-label="Waste"
-          startContent={<MonitorMobileIcon className="text-success" />}
+          startContent={<WasteIcon className="text-success" />}
           subtitle={
             <p className="flex">
               <em>garbage and waste</em>
@@ -200,7 +204,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="4"
           aria-label="Other"
-          startContent={<MonitorMobileIcon className="text-success" />}
+          startContent={<OtherIcon className="text-success" />}
           subtitle={
             <p className="flex">
               <em>miscellaneous</em>
