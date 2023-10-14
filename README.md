@@ -1,6 +1,9 @@
-# Next.js & NextUI Template
+# GreenJournal: The Next Step in Sustainability
+Project submitted to HackGT X: Journal of Memories
 
-This is a template for creating applications using Next.js 13 (app directory) and NextUI (v2).
+Track: Sustain 2110, Advanced Category
+
+<img width="663" alt="Screenshot_2023-10-14_at_1 10 32_AM" src="https://github.com/barrosodavid/hackgt-sustainability/assets/16299285/c11c4641-0ffe-4ce6-a9c1-1122ba2fb331">
 
 ## Technologies Used
 
@@ -11,6 +14,8 @@ This is a template for creating applications using Next.js 13 (app directory) an
 - [TypeScript](https://www.typescriptlang.org/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
+- [React](https://react.dev/)
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ## How to Use
 
