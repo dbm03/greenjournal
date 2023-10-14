@@ -13,7 +13,7 @@ import GreenAI from "./greenai";
 import { ManualSettings } from "./manualsettings";
 
 const JournalCard = () => {
-  const [selected, setSelected] = useState<string>("greenai");
+  const [selected, setSelected] = useState<string>("manual");
 
   return (
     <Card
@@ -24,7 +24,7 @@ const JournalCard = () => {
       <CardHeader className="flex justify-center">
         <h4 className="text-xl font-bold uppercase">Metrics</h4>
       </CardHeader>
-      <CardBody className="flex flex-col-reverse">
+      <CardBody className={selected === "greenai" ? "flex flex-col-reverse" : "flex flex-col"}>
         {selected === "greenai" ? <GreenAI /> : <ManualSettings />}
       </CardBody>
       <CardFooter>

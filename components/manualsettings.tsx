@@ -1,3 +1,7 @@
+import Data from "@/components/data-input";
+
 export const ManualSettings = () => {
-  return <div>Manual settings</div>;
+  return (<div>
+    <Data></Data>
+  </div>);
 };

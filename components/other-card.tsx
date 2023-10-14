@@ -4,11 +4,7 @@ const Card4 = () => {
     return(
       <div className="px-2 py-4 w-full min-w-[375px]">
       <div className="flex flex-col gap-4">
-      <p className="text-medium font-bold text-foreground">
-        Other Factors
-        </p>
           <div className="flex flex-col gap-2">
-          <Divider/>
           <p className="text-small text-default-500">Lifestyle</p>
           <Checkbox>I am vegetarian.</Checkbox>
           <Checkbox>I use a low flow showerhead.</Checkbox>
