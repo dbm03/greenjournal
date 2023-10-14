@@ -1,16 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  Input,
-  Checkbox,
-  Spacer,
-  Select,
-  SelectItem,
-  Button,
-} from "@nextui-org/react";
+import {Input,Checkbox,Button} from "@nextui-org/react";
 import { TransportationFormProps } from "./manualsettings";
 
 const TransportationForm = ({

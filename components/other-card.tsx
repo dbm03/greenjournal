@@ -1,16 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  Input,
-  Checkbox,
-  Spacer,
-  Select,
-  SelectItem,
-  Button,
-} from "@nextui-org/react";
+import {Checkbox,Spacer,Select,SelectItem,Button} from "@nextui-org/react";
 import { OtherFormProps } from "./manualsettings";
 
 const OtherForm = ({

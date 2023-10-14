@@ -1,33 +1,9 @@
 "use client";
-import NextLink from "next/link";
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code";
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
-import Image from "next/image";
-import Chat from "@/components/chat";
+
 import EarthViewCard from "@/components/earthviewcard";
 import HistoryGraphCard from "@/components/historygraphcard";
 import CarbonFootPrintCard from "@/components/carbonfootprintcard";
 import JournalCard from "@/components/journalcard";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Button,
-  Input,
-  Checkbox,
-  Card,
-  CardBody,
-} from "@nextui-org/react";
-import Card1 from "@/components/transportation-card";
-import Card2 from "@/components/energy-card";
-import Card3 from "@/components/waste-card";
-import Card4 from "@/components/other-card";
-import Popup from "@/components/popup";
 
 const initialData = [
   { time: "2018-12-22", value: 32.51 },

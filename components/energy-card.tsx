@@ -1,4 +1,4 @@
-import {Card, CardHeader, CardBody, CardFooter, Divider, Input, Checkbox, Spacer, Select, SelectItem, Button} from "@nextui-org/react";
+import {Input, Checkbox, Spacer, Select, SelectItem, Button} from "@nextui-org/react";
 
 const Card2 = () => {
     return(

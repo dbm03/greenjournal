@@ -1,16 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  Input,
-  Checkbox,
-  Spacer,
-  Select,
-  SelectItem,
-  Button,
-} from "@nextui-org/react";
+import {Divider,Input,Checkbox,Select,SelectItem,Button} from "@nextui-org/react";
 import { WasteFormProps } from "./manualsettings";
 
 const WasteForm = ({
