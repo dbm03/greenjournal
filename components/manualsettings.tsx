@@ -74,6 +74,17 @@ export const ManualSettings = () => {
     height: "290px",
   };
 
+// ==== Output Variables ====
+const [totalMetricTons, setTotalMetricTons] = useState<number>(0);
+const [transportationTotal, setTransportationTotal] = useState<number>(0);
+const [energyTotal, setEnergyTotal] = useState<number>(0);
+const [wasteTotal, setWasteTotal] = useState<number>(0);
+const [otherTotal, setOtherTotal] = useState<number>(0);
+
+const calcTotal = () => {
+  setTotalMetricTons(transportationTotal + energyTotal + wasteTotal + otherTotal);
+}
+
   // ==== Other form state ====
   const [isVegetarian, setIsVegetarian] = useState<boolean>(false);
   const [lowFlowShowerhead, setLowFlowShowerhead] = useState<boolean>(false);
