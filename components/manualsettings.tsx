@@ -9,6 +9,7 @@ import CSS from "csstype";
 import { useState } from "react";
 import TransportationForm from "./transportation-card";
 import WasteForm from "@/components/waste-card";
+import OtherForm from "@/components/other-card";
 
 export interface WasteFormProps {
   trashPerWeek: string;
@@ -69,6 +70,14 @@ export const ManualSettings = () => {
     height: "290px",
   };
 
+  // ==== Other form state ====
+  const [isVegetarian, setIsVegetarian] = useState<boolean>(false);
+  const [lowFlowShowerhead, setLowFlowShowerhead] = useState<boolean>(false);
+  const [isVolunteer, setIsVolunteer] = useState<boolean>(false);
+  const [shoppingHabits, setShoppingHabits] = useState<Selection>(new Set([]));
+  const [isRecycledProducts, setIsRecycledProducts] = useState<boolean>(false);
+  const [isOrganicProduce, setIsOrganicProduce] = useState<boolean>(false);
+
   // ==== Waste form state ====
   const [trashPerWeek, setTrashPerWeek] = useState<string>("");
   const [weightUnit, setWeightUnit] = useState<Selection>(new Set([]));
@@ -115,6 +124,10 @@ export const ManualSettings = () => {
       <Accordion
         showDivider={false}
         className="p-2 flex flex-col gap-1 w-full max-w-[450px]"
+        onKeyDown={(e) => {
+          e.preventDefault();
+        }}
+        isCompact
         variant="shadow"
         itemClasses={itemClasses}
         disableAnimation={true}
@@ -210,7 +223,20 @@ export const ManualSettings = () => {
         >
           <div style={innerStyle}>
             {/* OTHER FORM GOES HERE---------------------------------------------------------------*/}
-            <Card4 />
+            <OtherForm
+              isVegetarian={isVegetarian}
+              setIsVegetarian={setIsVegetarian}
+              lowFlowShowerhead={lowFlowShowerhead}
+              setLowFlowShowerhead={setLowFlowShowerhead}
+              isVolunteer={isVolunteer}
+              setIsVolunteer={setIsVolunteer}
+              shoppingHabits={shoppingHabits}
+              setShoppingHabits={setShoppingHabits}
+              isRecycledProducts={isRecycledProducts}
+              setIsRecycledProducts={setIsRecycledProducts}
+              isOrganicProduce={isOrganicProduce}
+              setIsOrganicProduce={setIsOrganicProduce}
+            />
           </div>
         </AccordionItem>
       </Accordion>
