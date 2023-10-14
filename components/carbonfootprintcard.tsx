@@ -6,14 +6,13 @@ const CarbonFootPrintCard = ({ metricTons = 4.3 }) => {
   return (
     <Card
       shadow="sm"
-      isBlurred
-      className="h-full border-none bg-background/60 dark:bg-default-100/30"
+      className="w-full h-full border-none backdrop-blur-[2px] border-neutral-600 bg-background/60 dark:bg-default-700/10"
     >
       <CardHeader className="flex justify-center">
         <h4 className="text-xl font-bold uppercase">Carbon Footprint</h4>
       </CardHeader>
       <CardBody className="flex flex-col items-center justify-center gap-2">
-        <span className="font-extrabold text-9xl">{metricTons}</span>
+        <span className="font-nova text-8xl">{metricTons}</span>
         <p>metric tons</p>
       </CardBody>
     </Card>

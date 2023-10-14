@@ -1,20 +1,22 @@
 "use client";
 
-import { Card, CardHeader } from "@nextui-org/react";
+import { Card, CardBody, CardHeader } from "@nextui-org/react";
 
 const EarthViewCard = () => {
   return (
     <Card
       shadow="sm"
-      isBlurred
-      className="border border-neutral-600 bg-background/60 dark:bg-default-100/10"
+      fullWidth
+      className="border-none border-neutral-600 backdrop-blur-[1px] bg-background/60 dark:bg-default-800/10"
     >
       <CardHeader className="flex justify-center">
         <h4 className="text-xl font-bold uppercase">Earth View</h4>
       </CardHeader>
-      <div className="flex items-center justify-center">
-        <img src="lowpolyearth.png" className="max-w-sm"></img>
-      </div>
+      <CardBody>
+        <div className="flex items-center justify-center">
+          <img src="lowpolyearth.png" className="max-w-sm"></img>
+        </div>
+      </CardBody>
     </Card>
   );
 };

@@ -9,10 +9,10 @@ const HistoryGraphCard = (props) => {
     data,
     colors: {
       backgroundColor = "transparent",
-      lineColor = "#2962FF",
+      lineColor = "rgba(0, 218, 106, 1)",
       textColor = "white",
-      areaTopColor = "#2962FF",
-      areaBottomColor = "rgba(41, 98, 255, 0.28)",
+      areaTopColor = "rgba(0, 218, 106, 1)",
+      areaBottomColor = "rgba(0, 218, 106, 0.28)",
     } = {},
   } = props;
 
@@ -60,7 +60,7 @@ const HistoryGraphCard = (props) => {
     <Card
       shadow="sm"
       isBlurred
-      className="border-none bg-background/60 dark:bg-default-100/30"
+      className="border-none bg-background/60 dark:bg-default-700/10"
     >
       <CardHeader className="flex items-center justify-center">
         <h3 className="text-2xl font-semibold uppercase">History</h3>

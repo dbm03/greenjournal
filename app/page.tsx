@@ -35,11 +35,11 @@ const initialData = [
 
 export default function Home() {
   return (
-    <section className="flex justify-center gap-2">
-      <div className="flex flex-col gap-2">
-        <div className="flex justify-center gap-2">
+    <section className="flex flex-1 flex-grow gap-4">
+      <div className="flex flex-col flex-1 gap-4">
+        <div className="flex flex-1 gap-4">
           <EarthViewCard />
-          <div>
+          <div className="flex flex-col flex-1 gap-4">
             <div>
               <CarbonFootPrintCard />
             </div>
@@ -52,7 +52,7 @@ export default function Home() {
           <HistoryGraphCard data={initialData} />
         </div>
       </div>
-      <div>
+      <div className="flex flex-1">
         <JournalCard />
       </div>
     </section>
