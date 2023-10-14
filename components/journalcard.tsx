@@ -11,6 +11,11 @@ import {
 import { useState } from "react";
 import GreenAI from "./greenai";
 import { ManualSettings } from "./manualsettings";
+import CSS from "csstype";
+
+const open: CSS.Properties = {
+  height:"100%",
+}
 
 const JournalCard = () => {
   const [selected, setSelected] = useState<string>("manual");
@@ -24,13 +29,14 @@ const JournalCard = () => {
       <CardHeader className="flex justify-center pb-0">
         <h4 className="text-xl font-bold uppercase">Metrics</h4>
       </CardHeader>
-      <CardBody
+      <div
         className={
           selected === "greenai" ? "flex flex-col-reverse" : "flex flex-col"
         }
+        style={open}
       >
         {selected === "greenai" ? <GreenAI /> : <ManualSettings />}
-      </CardBody>
+      </div>
       <CardFooter className="pt-0">
         <Tabs
           size="md"

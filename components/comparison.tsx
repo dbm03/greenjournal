@@ -18,21 +18,17 @@ interface CompProps {
 const offset: CSS.Properties = {
     paddingTop: "5px",
 }
-const marginFix: CSS.Properties = {
-    marginTop: "0px",
-    paddingTop: "0px"
-}
 
 const Comparison: FC<CompProps> = ({val1, val2, val3, val4}) => {
   return (
     <Card
       shadow="sm"
-      className="h-full w-64 aspect-square border-none backdrop-blur-[2px] border-neutral-600 bg-background/60 dark:bg-default-700/10"
+      className="h-full border-none backdrop-blur-[2px] border-neutral-600 bg-background/60 dark:bg-default-700/10"
     >
         <CardHeader className="flex justify-center text-xl font-bold uppercase">
         <h4>Comparison</h4>
         </CardHeader>
-      <CardBody style={marginFix} className="flex flex-col items-center justify-center gap-1">
+      <CardBody className="flex flex-col items-center justify-center gap-1">
       
       <Spacer/>
         <Progress size="lg" color="success" aria-label="Loading..." value={(val1+val2+val3+val4)/4} />

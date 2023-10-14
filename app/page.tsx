@@ -21,27 +21,29 @@ const initialData = [
 
 export default function Home() {
   return (
-    // <section className="flex flex-1 flex-grow gap-4">
-    //   <div className="flex flex-col flex-1 gap-4">
-    //     <div className="flex flex-1 gap-4">
-    //       <EarthViewCard />
-    //       <div className="flex flex-col flex-1 gap-4">
-    //         <div>
-    //           <Comparison val1={50} val2={30} val3={70} val4={40} />
-    //         </div>
-    //         <div>
-    //           <CarbonFootPrintCard />
-    //         </div>
-    //       </div>
-    //     </div>
-    //     <div>
-    //       <HistoryGraphCard data={initialData} />
-    //     </div>
-    //   </div>
-    //   <div className="flex flex-1">
-    //     <JournalCard />
-    //   </div>
-    // </section>
+    //  <section className="flex flex-1 flex-grow gap-4">
+    //    <div className="flex flex-col flex-1 gap-4">
+    //      <div className="flex flex-1 gap-4">
+    //        <EarthViewCard />
+    //        <div className="flex flex-col flex-1 gap-4">
+    //          <div>
+    //            <Comparison val1={50} val2={30} val3={70} val4={40} />
+    //          </div>
+    //          <div>
+    //            <CarbonFootPrintCard />
+    //          </div>
+    //        </div>
+    //      </div>
+    //      <div>
+    //        <HistoryGraphCard data={initialData} />
+    //      </div>
+    //    </div>
+    //    <div className="flex flex-1">
+    //      <JournalCard />
+    //    </div>
+    //  </section>
+
+
     <div className="grid grid-cols-5 max-h-[89vh] grid-rows-3 gap-4">
       <div className="col-span-2 row-span-2 ">
         <EarthViewCard />
@@ -50,7 +52,7 @@ export default function Home() {
         <JournalCard />
       </div>
       <div className="col-span-1 col-start-3 row-span-1 row-start-1 ">
-        <CarbonFootPrintCard />
+      <Comparison val1={50} val2={30} val3={70} val4={40} />
       </div>
       <div className="col-span-1 col-start-3 row-span-1 row-start-2 ">
         <CarbonFootPrintCard />
