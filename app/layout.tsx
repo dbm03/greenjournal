@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
+import { fontNova, fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import { Link } from "@nextui-org/link";
@@ -34,15 +34,19 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "font-sans antialiased absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]",
+          "bg-background font-sans antialiased selection:bg-secondary-500 box-border",
           fontSans.variable
         )}
       >
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        <div className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]"></div>
+
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="flex flex-col items-center gap-4">
-            <Navbar />
-            <main className="w-full h-full px-6">{children}</main>
-            <footer className="flex items-center justify-center w-full py-3"></footer>
+          <div className="relative w-full h-full bg-black">
+            <div className="flex flex-col items-center gap-4">
+              <Navbar />
+              <main className="w-full px-6">{children}</main>
+            </div>
           </div>
         </Providers>
       </body>

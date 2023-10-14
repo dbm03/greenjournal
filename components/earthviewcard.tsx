@@ -7,14 +7,13 @@ const EarthViewCard = () => {
     <Card
       shadow="sm"
       isBlurred
-      fullWidth
-      className="h-full border-none bg-background/60 dark:bg-default-100/30"
+      className="border border-neutral-600 bg-background/60 dark:bg-default-100/10"
     >
       <CardHeader className="flex justify-center">
         <h4 className="text-xl font-bold uppercase">Earth View</h4>
       </CardHeader>
       <div className="flex items-center justify-center">
-        <img src="lowpolyearth.png" className="w-128"></img>
+        <img src="lowpolyearth.png" className="max-w-sm"></img>
       </div>
     </Card>
   );

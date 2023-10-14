@@ -28,18 +28,24 @@ const initialData = [
 
 export default function Home() {
   return (
-    <section className="grid grid-cols-3 grid-rows-3 gap-4">
-      <div className="row-span-2">
-        <EarthViewCard />
+    <section className="flex justify-center gap-2">
+      <div className="flex flex-col gap-2">
+        <div className="flex justify-center gap-2">
+          <EarthViewCard />
+          <div>
+            <div>
+              <CarbonFootPrintCard />
+            </div>
+            <div>
+              <CarbonFootPrintCard />
+            </div>
+          </div>
+        </div>
+        <div>
+          <HistoryGraphCard data={initialData} />
+        </div>
       </div>
-      <div className="col-span-2 col-start-1 row-start-3">
-        <HistoryGraphCard data={initialData} />
-      </div>
-      <div className="col-start-2 row-start-1">3</div>
-      <div className="col-start-2 row-start-2">
-        <CarbonFootPrintCard />
-      </div>
-      <div className="col-start-3 row-span-3 row-start-1">
+      <div>
         <JournalCard />
       </div>
     </section>

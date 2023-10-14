@@ -29,7 +29,7 @@ const HistoryGraphCard = (props) => {
         textColor,
       },
       width: chartContainerRef.current.clientWidth,
-      height: 200,
+      height: 100,
     });
     chart.timeScale().fitContent();
 
@@ -63,7 +63,7 @@ const HistoryGraphCard = (props) => {
       className="border-none bg-background/60 dark:bg-default-100/30"
     >
       <CardHeader className="flex items-center justify-center">
-        <h3 className="text-2xl font-semibold">History</h3>
+        <h3 className="text-2xl font-semibold uppercase">History</h3>
       </CardHeader>
       <CardBody>
         <div ref={chartContainerRef} />
