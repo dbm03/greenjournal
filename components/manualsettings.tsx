@@ -144,8 +144,44 @@ export const ManualSettings = () => {
         fullWidth
         variant="light"
         itemClasses={itemClasses}
-        disableAnimation={true}
+
         defaultExpandedKeys={["1"]}
+        motionProps={{
+          variants: {
+            enter: {
+              y: 0,
+              opacity: 1,
+              height: "auto",
+              transition: {
+                height: {
+                  stiffness: 500,
+                  damping: 30,
+                  duration: 0.3,
+                  easings: "ease",
+                },
+                opacity: {
+                  easings: "ease",
+                  duration: 0.6,
+                },
+              },
+            },
+            exit: {
+              y: -10,
+              opacity: 0,
+              height: 0,
+              transition: {
+                height: {
+                  easings: "ease",
+                  duration: 0.25,
+                },
+                opacity: {
+                  easings: "ease",
+                  duration: 0.3,
+                },
+              },
+            },
+          },
+        }}
       >
         <AccordionItem
           key="1"
