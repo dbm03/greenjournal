@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useFrame } from "react-three-fiber";
 import useSpline from "@splinetool/r3f-spline";
 import { OrthographicCamera, PresentationControls } from "@react-three/drei";
+import * as THREE from 'three';
 
 export default function Globe({ ...props }) {
   const { nodes } = useSpline(
@@ -10,12 +11,16 @@ export default function Globe({ ...props }) {
 
   // Create a ref for the globe group
   const globeGroupRef = useRef();
+  const clock = new THREE.Clock();
   const GLOBE_SIZE = 1.5;
+  const ROTATION_SPEED = 0.5;
+
 
   // Use useFrame to animate the rotation of the globe
   useFrame(() => {
     if (globeGroupRef.current) {
-      globeGroupRef.current.rotation.y += 0.02; // Adjust the rotation speed as needed
+      const delta = clock.getDelta();
+      globeGroupRef.current.rotation.y += ROTATION_SPEED * delta;
     }
   });
 
