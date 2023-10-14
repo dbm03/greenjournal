@@ -58,6 +58,28 @@ export interface OtherFormProps {
   setIsOrganicProduce: (value: boolean) => void;
 }
 
+export interface EnergyFormProps {
+  naturalGas: string;
+  setNaturalGas: (value: string) => void;
+  naturalGasUnit: Selection;
+  setNaturalGasUnit: (value: Selection) => void;
+  electricityBill: string;
+  setElectricityBill: (value: string) => void;
+  electricityBillUnit: Selection;
+  setElectricityBillUnit: (value: Selection) => void;
+  isGreenEnergyHouse: boolean;
+  setIsGreenEnergyHouse: (value: boolean) => void;
+  fuelOil: string;
+  setFuelOil: (value: string) => void;
+  fuelOilUnit: Selection;
+  setFuelOilUnit: (value: Selection) => void;
+  propane: string;
+  setPropane: (value: string) => void;
+  propaneUnit: Selection;
+  setPropaneUnit: (value: Selection) => void;
+  submitForm: () => void;
+}
+
 export const ManualSettings = () => {
   const itemClasses = {
     base: "py-0 w-full",
@@ -85,6 +107,37 @@ export const ManualSettings = () => {
       transportationTotal + energyTotal + wasteTotal + otherTotal
     );
   };
+
+  // ==== Energy form state ====
+  const [electricityBill, setElectricityBill] = useState<string>("");
+  const [electricityBillUnit, setElectricityBillUnit] = useState<Selection>(
+    new Set([])
+  );
+  const [naturalGas, setNaturalGas] = useState<string>("");
+  const [naturalGasUnit, setNaturalGasUnit] = useState<Selection>(new Set([]));
+  const [fuelOil, setFuelOil] = useState<string>("");
+  const [fuelOilUnit, setFuelOilUnit] = useState<Selection>(new Set([]));
+  const [propane, setPropane] = useState<string>("");
+  const [propaneUnit, setPropaneUnit] = useState<Selection>(new Set([]));
+  const [isGreenEnergyHouse, setIsGreenEnergyHouse] = useState<boolean>(false);
+
+  const handleElectricityBill = (value: string) => {
+    if (Number(value) >= 0) setElectricityBill(value);
+  };
+
+  const handleNaturalGas = (value: string) => {
+    if (Number(value) >= 0) setNaturalGas(value);
+  };
+
+  const handleFuelOil = (value: string) => {
+    if (Number(value) >= 0) setFuelOil(value);
+  };
+
+  const handlePropane = (value: string) => {
+    if (Number(value) >= 0) setPropane(value);
+  };
+
+  const handleEnergySubmit = () => {};
 
   // ==== Other form state ====
   const [isVegetarian, setIsVegetarian] = useState<boolean>(false);
