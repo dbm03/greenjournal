@@ -16,7 +16,7 @@ export default function Chat() {
           {m.role}: {m.content}
         </div>
       ))}
-      <Spacer y={5}/>
+      <Spacer y={4}/>
       <form onSubmit={handleSubmit}>
           <Input label="Say something..." value={input} onChange={handleInputChange} />
       </form>
