@@ -1,38 +1,52 @@
-import {Card, CardHeader, CardBody, CardFooter, Divider, Input, Checkbox, Spacer, Select, SelectItem} from "@nextui-org/react";
+import {Card, CardHeader, CardBody, CardFooter, Divider, Input, Checkbox, Spacer, Select, SelectItem, Button} from "@nextui-org/react";
 
 const Card2 = () => {
     return(
-        <Card className="max-w-[400px]">
-        <CardHeader className="flex gap-3">
-            <div className="flex flex-col">
-            <Spacer x={4} />
-              <p className="text-md">Waste</p>
-            </div>
-          </CardHeader>
-          <Divider/>
-          <CardBody>
-          <div className="flex flex-col gap-6">
+      <div className="px-2 py-4 w-full min-w-[375px]">
+      <div className="flex flex-col gap-4">
+      <p className="text-medium font-bold text-foreground">
+        Home Energy
+        </p>
           <div className="flex flex-col gap-2">
-          <p className="text-small text-default-500"></p>
+          <Divider/>
+          <p className="text-small text-default-500">Natural Gas</p>
           <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
-          <Input label="Trash/Week" className="max-w-[170px]" />
-          <Select className="max-w-xs" label="Select units" defaultSelectedKeys={["pounds"]}>
-            <SelectItem key="pounds">Pounds</SelectItem>
-            <SelectItem key="kilograms">Kilograms</SelectItem>
+          <Input label="Monthy Usage" className="max-w-[170px]" />
+          <Select className="max-w-xs" label="Select units" defaultSelectedKeys={["cubic-feet"]}>
+            <SelectItem key="cubic-feet">1000 Cubic Feet</SelectItem>
+            <SelectItem key="dollars">Dollars</SelectItem>
+          </Select>
+          </div>
+          <p className="text-small text-default-500">Electricity</p>
+          <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
+          <Input label="Monthy Usage" className="max-w-[170px]" />
+          <Select className="max-w-xs" label="Select units" defaultSelectedKeys={["kilowatt-hours"]}>
+            <SelectItem key="kilowatt-hours">Kilowatt-Hours</SelectItem>
+            <SelectItem key="dollars">Dollars</SelectItem>
+          </Select>
+          </div>
+          <Checkbox defaultSelected>My household purchases green energy.</Checkbox>
+          <Spacer/>
+          <p className="text-small text-default-500">Fuel Oil</p>
+          <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
+          <Input label="Monthy Usage" className="max-w-[170px]" />
+          <Select className="max-w-xs" label="Select units" defaultSelectedKeys={["gallons"]}>
+            <SelectItem key="gallons">Gallons</SelectItem>
+            <SelectItem key="dollars">Dollars</SelectItem>
+          </Select>
+          </div>
+          <p className="text-small text-default-500">Propane</p>
+          <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
+          <Input label="Monthy Usage" className="max-w-[170px]" />
+          <Select className="max-w-xs" label="Select units" defaultSelectedKeys={["gallons"]}>
+            <SelectItem key="gallons">Gallons</SelectItem>
+            <SelectItem key="dollars">Dollars</SelectItem>
           </Select>
           </div>
           </div>
-          <div className="flex flex-col gap-2">
-          <p className="text-small text-default-500">My household recycles...</p>
-          <Checkbox defaultSelected>Aluminum/steel cans</Checkbox>
-          <Checkbox defaultSelected>Plastic</Checkbox>
-          <Checkbox defaultSelected>Glass</Checkbox>
-          <Checkbox defaultSelected>Newspaper</Checkbox>
-          <Checkbox defaultSelected>Magazines</Checkbox>
-        </div>
+          <Button color="primary">Save Changes</Button>
           </div>
-          </CardBody>
-        </Card>
+        </div>
     )
 }
 export default Card2;
