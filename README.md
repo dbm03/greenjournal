@@ -1,6 +1,10 @@
 # GreenJournal: The Next Step in Sustainability
 Project submitted to HackGT X: Journal of Memories
 
+Track: Sustain 2110, Advanced Category
+
+<img width="663" alt="Screenshot_2023-10-14_at_1 10 32_AM" src="https://github.com/barrosodavid/hackgt-sustainability/assets/16299285/c11c4641-0ffe-4ce6-a9c1-1122ba2fb331">
+
 ## Technologies Used
 
 - [Next.js 13](https://nextjs.org/docs/getting-started)
