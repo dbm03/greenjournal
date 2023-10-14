@@ -4,6 +4,7 @@ import EarthViewCard from "@/components/earthviewcard";
 import HistoryGraphCard from "@/components/historygraphcard";
 import CarbonFootPrintCard from "@/components/carbonfootprintcard";
 import JournalCard from "@/components/journalcard";
+import Comparison from "@/components/comparison";
 
 const initialData = [
   { time: "2018-12-22", value: 32.51 },
@@ -26,7 +27,7 @@ export default function Home() {
           <EarthViewCard />
           <div className="flex flex-col flex-1 gap-4">
             <div>
-              <CarbonFootPrintCard />
+              <Comparison val1={50} val2={30} val3={70} val4={40} />
             </div>
             <div>
               <CarbonFootPrintCard />
