@@ -41,7 +41,7 @@ export default function Globe({ ...props }) {
               castShadow
               receiveShadow
               rotation={[-Math.PI / 2, 0, 0]}
-              scale={100}
+              scale={100 * 1.5}
             />
             <mesh
               name="Ocean"
@@ -50,7 +50,7 @@ export default function Globe({ ...props }) {
               castShadow
               receiveShadow
               rotation={[-Math.PI / 2, 0, 0]}
-              scale={100}
+              scale={100 * 1.5}
             />
             <mesh
               name="Sphere"
@@ -59,7 +59,7 @@ export default function Globe({ ...props }) {
               castShadow
               receiveShadow
               rotation={[-Math.PI / 2, 0, 0]}
-              scale={140}
+              scale={140 * 1.5}
             />
             <mesh
               name="Base_Land"
@@ -68,7 +68,7 @@ export default function Globe({ ...props }) {
               castShadow
               receiveShadow
               rotation={[-Math.PI / 2, 0, 0]}
-              scale={100}
+              scale={100 * 1.5}
             />
             <mesh
               name="Cylinder"
@@ -78,7 +78,7 @@ export default function Globe({ ...props }) {
               receiveShadow
               position={[0, -3.7, 0]}
               rotation={[-Math.PI / 2, 0, 0]}
-              scale={[100, 100, 98.99]}
+              scale={[100 * 1.5, 100 * 1.5, 98.99 * 1.5]}
             />
           </PresentationControls>
         </group>
