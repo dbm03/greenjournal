@@ -5,6 +5,7 @@ import HistoryGraphCard from "@/components/historygraphcard";
 import CarbonFootPrintCard from "@/components/carbonfootprintcard";
 import JournalCard from "@/components/journalcard";
 import Comparison from "@/components/comparison";
+import Tips from "@/components/tips";
 
 const initialData = [
   { time: "2018-12-22", value: 32.51 },
@@ -44,20 +45,23 @@ export default function Home() {
     //  </section>
 
 
-    <div className="grid grid-cols-5 max-h-[89vh] grid-rows-3 gap-4">
-      <div className="col-span-2 row-span-2 ">
+    <div className="grid grid-cols-10 max-h-[89vh] grid-rows-3 gap-4">
+      <div className="col-span-4 row-span-2 ">
         <EarthViewCard />
       </div>
-      <div className="col-span-2 row-span-3 ">
+      <div className="col-span-3 row-span-3 ">
         <JournalCard />
       </div>
-      <div className="col-span-1 col-start-3 row-span-1 row-start-1 ">
+      <div className="col-span-1 row-span-3 ">
+        <Tips />
+      </div>
+      <div className="col-span-2 col-start-5 row-span-1 row-start-1 ">
       <Comparison val1={50} val2={30} val3={70} val4={40} />
       </div>
-      <div className="col-span-1 col-start-3 row-span-1 row-start-2 ">
+      <div className="col-span-2 col-start-5 row-span-1 row-start-2 ">
         <CarbonFootPrintCard />
       </div>
-      <div className="col-span-3 row-start-3 ">
+      <div className="col-span-6 row-start-3 ">
         <HistoryGraphCard data={initialData} />
       </div>
     </div>
