@@ -14,7 +14,7 @@ export default function AboutPage() {
 			<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
 				<div className="inline-block max-w-lg text-center justify-center">
 					<h1 className={title()}>Worldwide carbon dioxide emissions have increased by&nbsp;</h1>
-					<h1 className={title({ color: "violet" })}>35.59%&nbsp;</h1>
+					<h1 className={title({ color: "green" })}>35.59%&nbsp;</h1>
 					<br />
 					<h1 className={title()}>
 						in the last 20 years.
@@ -37,7 +37,7 @@ export default function AboutPage() {
 						isExternal
 						as={NextLink}
 						href="https://www3.epa.gov/carbon-footprint-calculator/"
-						className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
+						className={buttonStyles({ color: "success", radius: "full", variant: "shadow" })}
 					>
 						EPA.gov
 					</Link>
