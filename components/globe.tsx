@@ -87,7 +87,7 @@ export default function Globe({ ...props }) {
         <directionalLight
           name="Directional Light"
           castShadow
-          intensity={0.7}
+          intensity={2}
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
           shadow-camera-near={-10000}
