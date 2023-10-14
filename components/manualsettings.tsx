@@ -9,10 +9,10 @@ import TransportationForm from "./transportation-card";
 import WasteForm from "@/components/waste-card";
 import OtherForm from "@/components/other-card";
 
-import {CarIcon} from "./CarIcon.jsx";
-import {EnergyIcon} from "./EnergyIcon.jsx";
-import {WasteIcon} from "./WasteIcon.jsx";
-import {OtherIcon} from "./OtherIcon.jsx";
+import { CarIcon } from "./CarIcon.jsx";
+import { EnergyIcon } from "./EnergyIcon.jsx";
+import { WasteIcon } from "./WasteIcon.jsx";
+import { OtherIcon } from "./OtherIcon.jsx";
 
 export interface WasteFormProps {
   trashPerWeek: string;
@@ -73,16 +73,18 @@ export const ManualSettings = () => {
     height: "290px",
   };
 
-// ==== Output Variables ====
-const [totalMetricTons, setTotalMetricTons] = useState<number>(0);
-const [transportationTotal, setTransportationTotal] = useState<number>(0);
-const [energyTotal, setEnergyTotal] = useState<number>(0);
-const [wasteTotal, setWasteTotal] = useState<number>(0);
-const [otherTotal, setOtherTotal] = useState<number>(0);
+  // ==== Output Variables ====
+  const [totalMetricTons, setTotalMetricTons] = useState<number>(0);
+  const [transportationTotal, setTransportationTotal] = useState<number>(0);
+  const [energyTotal, setEnergyTotal] = useState<number>(0);
+  const [wasteTotal, setWasteTotal] = useState<number>(0);
+  const [otherTotal, setOtherTotal] = useState<number>(0);
 
-const calcTotal = () => {
-  setTotalMetricTons(transportationTotal + energyTotal + wasteTotal + otherTotal);
-}
+  const calcTotal = () => {
+    setTotalMetricTons(
+      transportationTotal + energyTotal + wasteTotal + otherTotal
+    );
+  };
 
   // ==== Other form state ====
   const [isVegetarian, setIsVegetarian] = useState<boolean>(false);
@@ -137,12 +139,10 @@ const calcTotal = () => {
     <div>
       <Accordion
         showDivider={false}
-        className="p-2 flex flex-col gap-1 w-full max-w-[450px]"
-        onKeyDown={(e) => {
-          e.preventDefault();
-        }}
+        className="flex flex-col w-full p-2"
         isCompact
-        variant="shadow"
+        fullWidth
+        variant="light"
         itemClasses={itemClasses}
         disableAnimation={true}
         defaultExpandedKeys={["1"]}
