@@ -16,6 +16,9 @@ import CSS from "csstype";
 const open: CSS.Properties = {
   height:"100%",
 }
+const marginAdjust: CSS.Properties = {
+  marginTop:"10px",
+}
 
 const JournalCard = () => {
   const [selected, setSelected] = useState<string>("manual");
@@ -51,6 +54,7 @@ const JournalCard = () => {
             tabList: "relative p-0",
           }}
           onSelectionChange={(e) => setSelected(e as string)}
+          style={marginAdjust}
         >
           <Tab key="manual" title="Manual"></Tab>
           <Tab key="greenai" title="GreenAI"></Tab>

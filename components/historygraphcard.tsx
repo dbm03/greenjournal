@@ -3,6 +3,11 @@
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { createChart, ColorType } from "lightweight-charts";
 import React, { useEffect, useRef } from "react";
+import CSS from "csstype";
+
+const hidden: CSS.Properties = {
+  overflow: "hidden",
+}
 
 const HistoryGraphCard = (props) => {
   const {
@@ -65,7 +70,7 @@ const HistoryGraphCard = (props) => {
       <CardHeader className="flex items-center justify-center">
         <h3 className="text-2xl font-semibold uppercase">History</h3>
       </CardHeader>
-      <CardBody className="">
+      <CardBody className="flex-col-reverse" style={hidden}>
         <div ref={chartContainerRef} />
       </CardBody>
     </Card>

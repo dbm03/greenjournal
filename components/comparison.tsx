@@ -18,6 +18,10 @@ interface CompProps {
 const offset: CSS.Properties = {
     paddingTop: "5px",
 }
+const margins: CSS.Properties = {
+    marginLeft: "5%",
+    marginRight: "5%",
+  }
 
 const Comparison: FC<CompProps> = ({val1, val2, val3, val4}) => {
   return (
@@ -28,12 +32,8 @@ const Comparison: FC<CompProps> = ({val1, val2, val3, val4}) => {
         <CardHeader className="flex justify-center text-xl font-bold uppercase">
         <h4>Comparison</h4>
         </CardHeader>
-      <CardBody className="flex flex-col items-center justify-center gap-1">
-      
-      <Spacer/>
-        <Progress size="lg" color="success" aria-label="Loading..." value={(val1+val2+val3+val4)/4} />
+      <div style={margins} className="flex flex-col items-center justify-center gap-1">
         <Spacer/>
-        <p><em>Breakdown by Category</em></p>
       <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
       <CarIcon className="text-success" style={offset} />
       <Progress color="success" aria-label="Loading..." value={val1} />
@@ -50,7 +50,7 @@ const Comparison: FC<CompProps> = ({val1, val2, val3, val4}) => {
       <OtherIcon className="text-success" style={offset} />
       <Progress color="success" aria-label="Loading..." value={val4} />
       </div>
-      </CardBody>
+      </div>
     </Card>
   );
 };
