@@ -36,14 +36,14 @@ const TransportationForm = ({
               type="number"
               className="max-w-[170px]"
               value={milesPerWeekVehicle}
-              onChange={(e) => setMilesPerWeekVehicle(e.target.value)}
+              onValueChange={setMilesPerWeekVehicle}
             />
             <Input
               label="Miles/Gallon"
               type="number"
               className="max-w-[170px]"
               value={milesPerGallon}
-              onChange={(e) => setMilesPerGallon(e.target.value)}
+              onValueChange={setMilesPerGallon}
             />
           </div>
           <Checkbox
@@ -56,8 +56,6 @@ const TransportationForm = ({
         <div className="flex flex-col gap-2">
           <div className="flex flex-wrap items-end w-full gap-4 mb-6 md:flex-nowrap md:mb-0">
             <div className="flex flex-col gap-2">
-            <p className="text-small text-default-500">Public Transportation</p>
-            <Input label="Miles/Week" className="max-w-[200px]" />
               <p className="text-small text-default-500">
                 Public Transportation
               </p>
@@ -65,9 +63,7 @@ const TransportationForm = ({
                 label="Miles/Week"
                 type="number"
                 value={milesPerWeekPublicTransportation}
-                onChange={(e) =>
-                  setMilesPerWeekPublicTransportation(e.target.value)
-                }
+                onValueChange={setMilesPerWeekPublicTransportation}
                 className="max-w-[170px]"
               />
             </div>
@@ -77,7 +73,7 @@ const TransportationForm = ({
                 label="Flights/Year"
                 type="number"
                 value={flightsPerYear}
-                onChange={(e) => setFlightsPerYear(e.target.value)}
+                onValueChange={setFlightsPerYear}
                 className="max-w-[170px]"
               />
             </div>
