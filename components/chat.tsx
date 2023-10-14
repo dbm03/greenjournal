@@ -13,13 +13,14 @@ export default function Chat() {
     <div>
       {messages.map((m) => (
         <div key={m.id}>
-          {m.role}: {m.content}
+          {m.role === 'user' ? 'User: ' : 'GreenAI: '}
+          {m.content}
         </div>
       ))}
-      <Spacer y={4}/>
+      <Spacer y={5}/>
       <form onSubmit={handleSubmit}>
-          <Input label="Say something..." value={input} onChange={handleInputChange} />
+          <Input label="Say something...." value={input} onChange={handleInputChange} />
       </form>
     </div>
-  );
+);
 }
