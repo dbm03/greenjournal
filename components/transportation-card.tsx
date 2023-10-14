@@ -49,6 +49,7 @@ const TransportationForm = ({
           <Checkbox
             isSelected={isRegularVehicleMaintenance}
             onValueChange={setRegularVehicleMaintenance}
+            color="success"
           >
             I regularly maintain my vehicles.
           </Checkbox>
@@ -79,7 +80,7 @@ const TransportationForm = ({
             </div>
           </div>
         </div>
-        <Button color="primary">Save Changes</Button>
+        <Button color="success">Save Changes</Button>
       </div>
     </div>
   );

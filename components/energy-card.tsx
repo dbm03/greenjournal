@@ -21,7 +21,7 @@ const Card2 = () => {
             <SelectItem key="dollars">Dollars</SelectItem>
           </Select>
           </div>
-          <Checkbox>My household purchases green energy.</Checkbox>
+          <Checkbox color="success">My household purchases green energy.</Checkbox>
           <Spacer/>
           <p className="text-small text-default-500">Fuel Oil</p>
           <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
@@ -40,7 +40,7 @@ const Card2 = () => {
           </Select>
           </div>
           </div>
-          <Button color="primary">Save Changes</Button>
+          <Button color="success">Save Changes</Button>
           </div>
         </div>
     )

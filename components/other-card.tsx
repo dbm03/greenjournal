@@ -32,9 +32,9 @@ const OtherForm = ({
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <p className="text-small text-default-500">Lifestyle</p>
-          <Checkbox>I am vegetarian.</Checkbox>
-          <Checkbox>I use a low flow showerhead.</Checkbox>
-          <Checkbox>I volunteer for environmental projects.</Checkbox>
+          <Checkbox color="success">I am vegetarian.</Checkbox>
+          <Checkbox color="success">I use a low flow showerhead.</Checkbox>
+          <Checkbox color="success">I volunteer for environmental projects.</Checkbox>
           <p className="text-small text-default-500">
             <em>(i.e. conservation efforts, planting trees)</em>
           </p>
@@ -49,11 +49,11 @@ const OtherForm = ({
             <SelectItem key="sometimes">Sometimes</SelectItem>
             <SelectItem key="often">Often</SelectItem>
           </Select>
-          <Checkbox>I frequently buy recycled/reused products.</Checkbox>
-          <Checkbox>I buy organic, locally-sourced produce.</Checkbox>
+          <Checkbox color="success">I frequently buy recycled/reused products.</Checkbox>
+          <Checkbox color="success">I buy organic, locally-sourced produce.</Checkbox>
           <Spacer />
         </div>
-        <Button color="primary">Save Changes</Button>
+        <Button color="success">Save Changes</Button>
       </div>
     </div>
   );

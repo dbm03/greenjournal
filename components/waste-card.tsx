@@ -62,32 +62,39 @@ const WasteForm = ({
           <Checkbox
             isSelected={recyclesAluminumSteelCans}
             onValueChange={setRecyclesAluminumSteelCans}
+            color="success"
           >
             Aluminum/steel cans
           </Checkbox>
           <Checkbox
             isSelected={recyclesPlastic}
             onValueChange={setRecyclesPlastic}
+            color="success"
           >
             Plastic
           </Checkbox>
-          <Checkbox isSelected={recyclesGlass} onValueChange={setRecyclesGlass}>
+          <Checkbox 
+          isSelected={recyclesGlass} 
+          onValueChange={setRecyclesGlass} 
+          color="success">
             Glass
           </Checkbox>
           <Checkbox
             isSelected={recyclesNewspaper}
             onValueChange={setRecyclesNewspaper}
+            color="success"
           >
             Newspaper
           </Checkbox>
           <Checkbox
             isSelected={recyclesMagazines}
             onValueChange={setRecyclesMagazines}
+            color="success"
           >
             Magazines
           </Checkbox>
         </div>
-        <Button color="primary">Save Changes</Button>
+        <Button color="success">Save Changes</Button>
       </div>
     </div>
   );
