@@ -1,6 +1,7 @@
 "use client";
 
 import { useChat } from "ai/react";
+import {Input, Spacer} from "@nextui-org/react";
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -15,12 +16,9 @@ export default function Chat() {
           {m.role}: {m.content}
         </div>
       ))}
-
+      <Spacer y={5}/>
       <form onSubmit={handleSubmit}>
-        <label>
-          Say something...
-          <input value={input} onChange={handleInputChange} />
-        </label>
+          <Input label="Say something..." value={input} onChange={handleInputChange} />
       </form>
     </div>
   );
