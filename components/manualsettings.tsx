@@ -2,8 +2,7 @@
 import React from "react";
 import { Accordion, AccordionItem, Selection } from "@nextui-org/react";
 import Card2 from "@/components/energy-card";
-import Card3 from "@/components/waste-card";
-import Card4 from "@/components/other-card";
+
 import CSS from "csstype";
 import { useState } from "react";
 import TransportationForm from "./transportation-card";
@@ -73,6 +72,17 @@ export const ManualSettings = () => {
     overflowY: "scroll",
     height: "290px",
   };
+
+// ==== Output Variables ====
+const [totalMetricTons, setTotalMetricTons] = useState<number>(0);
+const [transportationTotal, setTransportationTotal] = useState<number>(0);
+const [energyTotal, setEnergyTotal] = useState<number>(0);
+const [wasteTotal, setWasteTotal] = useState<number>(0);
+const [otherTotal, setOtherTotal] = useState<number>(0);
+
+const calcTotal = () => {
+  setTotalMetricTons(transportationTotal + energyTotal + wasteTotal + otherTotal);
+}
 
   // ==== Other form state ====
   const [isVegetarian, setIsVegetarian] = useState<boolean>(false);
