@@ -2,8 +2,7 @@
 import React from "react";
 import { Accordion, AccordionItem, Selection } from "@nextui-org/react";
 import Card2 from "@/components/energy-card";
-import Card3 from "@/components/waste-card";
-import Card4 from "@/components/other-card";
+
 import CSS from "csstype";
 import { useState } from "react";
 import TransportationForm from "./transportation-card";
