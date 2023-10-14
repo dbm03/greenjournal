@@ -34,7 +34,7 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "font-sans max-h-screen bg-black antialiased selection:bg-secondary-500 box-border",
+          "font-sans max-h-screen bg-black antialiased selection:bg-success box-border",
           fontSans.variable,
           fontNova.variable
         )}
