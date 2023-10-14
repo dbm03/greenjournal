@@ -1,6 +1,9 @@
 "use client";
 
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import Globe from "./globe";
 
 const EarthViewCard = () => {
   return (
@@ -13,9 +16,11 @@ const EarthViewCard = () => {
         <h4 className="text-xl font-bold uppercase">Earth View</h4>
       </CardHeader>
       <CardBody>
-        <div className="flex items-center justify-center">
-          <img src="lowpolyearth.png" className="max-w-sm"></img>
-        </div>
+      <Canvas shadows flat linear>
+        <scene>
+          <Globe />
+        </scene>
+      </Canvas>
       </CardBody>
     </Card>
   );
