@@ -17,6 +17,7 @@ import {Popover, PopoverTrigger, PopoverContent, Button, Input, Checkbox, Card, 
 import Card1 from "@/components/transportation-card";
 import Card2 from "@/components/energy-card";
 import Card3 from "@/components/waste-card";
+import Card4 from "@/components/other-card"
 import Popup from "@/components/popup";
 
 const initialData = [

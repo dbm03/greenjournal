@@ -12,7 +12,7 @@ const Card1 = () => {
         <Input label="Miles/Week" className="max-w-[170px]" />
         <Input label="Miles/Gallon" className="max-w-[170px]" />
         </div>
-        <Checkbox defaultSelected>I regularly maintain my vehicles.</Checkbox>
+        <Checkbox>I regularly maintain my vehicles.</Checkbox>
         </div>
         <div className="flex flex-col gap-2">
         

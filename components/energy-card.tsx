@@ -25,7 +25,7 @@ const Card2 = () => {
             <SelectItem key="dollars">Dollars</SelectItem>
           </Select>
           </div>
-          <Checkbox defaultSelected>My household purchases green energy.</Checkbox>
+          <Checkbox>My household purchases green energy.</Checkbox>
           <Spacer/>
           <p className="text-small text-default-500">Fuel Oil</p>
           <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">

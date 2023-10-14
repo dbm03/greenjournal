@@ -20,11 +20,11 @@ const Card3 = () => {
 	  </div>
 	  <div className="flex flex-col gap-2">
 	  <p className="text-small text-default-500">My household recycles...</p>
-	  <Checkbox defaultSelected>Aluminum/steel cans</Checkbox>
-	  <Checkbox defaultSelected>Plastic</Checkbox>
-	  <Checkbox defaultSelected>Glass</Checkbox>
-	  <Checkbox defaultSelected>Newspaper</Checkbox>
-	  <Checkbox defaultSelected>Magazines</Checkbox>
+	  <Checkbox>Aluminum/steel cans</Checkbox>
+	  <Checkbox>Plastic</Checkbox>
+	  <Checkbox>Glass</Checkbox>
+	  <Checkbox>Newspaper</Checkbox>
+	  <Checkbox>Magazines</Checkbox>
 	</div>
 	<Button color="primary">Save Changes</Button>
 	</div>
