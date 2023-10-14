@@ -34,14 +34,14 @@ const TransportationForm = ({
             <Input
               label="Miles/Week"
               type="number"
-              className="max-w-[170px]"
+              className="max-w-[200px]"
               value={milesPerWeekVehicle}
               onValueChange={setMilesPerWeekVehicle}
             />
             <Input
               label="Miles/Gallon"
               type="number"
-              className="max-w-[170px]"
+              className="max-w-[200px]"
               value={milesPerGallon}
               onValueChange={setMilesPerGallon}
             />
@@ -64,7 +64,7 @@ const TransportationForm = ({
                 type="number"
                 value={milesPerWeekPublicTransportation}
                 onValueChange={setMilesPerWeekPublicTransportation}
-                className="max-w-[170px]"
+                className="max-w-[200px]"
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -74,7 +74,7 @@ const TransportationForm = ({
                 type="number"
                 value={flightsPerYear}
                 onValueChange={setFlightsPerYear}
-                className="max-w-[170px]"
+                className="max-w-[200px]"
               />
             </div>
           </div>
