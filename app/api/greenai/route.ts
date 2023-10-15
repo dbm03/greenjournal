@@ -19,13 +19,31 @@ export async function POST(req: Request) {
     model: "gpt-3.5-turbo",
     stream: true,
     messages: [
-      {
-        role: "system",
-        content:
-          "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. You have to say that your name is JohnGPT3 before.",
+      { 
+        role: "system", 
+        content: "Hello! I am GreenAI, your personal assistant for tracking and understanding your carbon-saving habits. By sharing your activities with me, I will estimate the metric tons of carbon you've saved per year. At the end of our conversation, I'll provide a JSON data file detailing your habits and the associated carbon footprint reduction. When you're done sharing, just let me know, and I'll finalize your journal. Let's start journalling!" 
       },
-      ...messages,
-    ],
+      { 
+        role: "user", 
+        content: "This week, I carpooled and used public transport more often." 
+      },
+      { 
+        role: "assistant", 
+        content: "That's fantastic! Carpooling and using public transport significantly reduces individual carbon footprints. Would you like to add more to your journal or is that all for now?" 
+      },
+      { 
+        role: "user", 
+        content: "That's all for my journal today." 
+      },
+      { 
+        role: "assistant", 
+        content: "Thank you for contributing to a greener earth. I'm now generating your JSON data file based on your journal entries. Stay eco-conscious!"
+      },
+      {
+        role: "user",
+        content: ""
+      }
+    ]
   });
   // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response);
