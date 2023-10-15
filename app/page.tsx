@@ -38,6 +38,8 @@ export default function Home() {
   // mock user storage data
 
   useEffect(() => {
+    if (!localStorage) return;
+
     localStorage.setItem(
       "currentMetrics",
       JSON.stringify(mockStorageData.currentMetrics)
@@ -47,69 +49,44 @@ export default function Home() {
       "currentMetricTonsPerYear",
       JSON.stringify(mockStorageData.currentMetricTonsPerYear)
     );
-    localStorage.setItem(
-      "v1",
-      JSON.stringify(mockStorageData.v1)
-    );
-    localStorage.setItem(
-      "v2",
-      JSON.stringify(mockStorageData.v2)
-    );
-    localStorage.setItem(
-      "v3",
-      JSON.stringify(mockStorageData.v3)
-    );
-    localStorage.setItem(
-      "v4",
-      JSON.stringify(mockStorageData.v4)
-    );
+    localStorage.setItem("v1", JSON.stringify(mockStorageData.v1));
+    localStorage.setItem("v2", JSON.stringify(mockStorageData.v2));
+    localStorage.setItem("v3", JSON.stringify(mockStorageData.v3));
+    localStorage.setItem("v4", JSON.stringify(mockStorageData.v4));
+
+    const v1JSON = localStorage?.getItem("v1");
+    if (v1JSON !== null) {
+      const v1 = JSON.parse(v1JSON);
+      setV1(v1);
+    }
+    const v2JSON = localStorage?.getItem("v2");
+    if (v2JSON !== null) {
+      const v2 = JSON.parse(v2JSON);
+      setV2(v2);
+    }
+    const v3JSON = localStorage?.getItem("v3");
+    if (v3JSON !== null) {
+      const v3 = JSON.parse(v3JSON);
+      setV3(v3);
+    }
+    const v4JSON = localStorage?.getItem("v4");
+    if (v4JSON !== null) {
+      const v4 = JSON.parse(v4JSON);
+      setV4(v4);
+    }
+
+    const metricTonsJSON = localStorage?.getItem("currentMetricTonsPerYear");
+    if (metricTonsJSON !== null) {
+      const currentMetricTons = JSON.parse(metricTonsJSON);
+      setTotalMetricTons(currentMetricTons);
+    }
   }, []);
 
-  const [totalMetricTons, setTotalMetricTons] = useState(() => {
-    // get from local storage totalmetrictons if saved
-    const saved = localStorage?.getItem("currentMetricTonsPerYear");
-    if (saved === null) {
-      return 0;
-    }
-    const initialValue = JSON.parse(saved);
-    return initialValue || 0;
-  });
-  const [v1, setV1] = useState(() => {
-    // get from local storage totalmetrictons if saved
-    const saved = localStorage?.getItem("v1");
-    if (saved === null) {
-      return 0;
-    }
-    const initialValue = JSON.parse(saved);
-    return initialValue || 0;
-  });
-  const [v2, setV2] = useState(() => {
-    // get from local storage totalmetrictons if saved
-    const saved = localStorage?.getItem("v2");
-    if (saved === null) {
-      return 0;
-    }
-    const initialValue = JSON.parse(saved);
-    return initialValue || 0;
-  });
-  const [v3, setV3] = useState(() => {
-    // get from local storage totalmetrictons if saved
-    const saved = localStorage?.getItem("v3");
-    if (saved === null) {
-      return 0;
-    }
-    const initialValue = JSON.parse(saved);
-    return initialValue || 0;
-  });
-  const [v4, setV4] = useState(() => {
-    // get from local storage totalmetrictons if saved
-    const saved = localStorage?.getItem("v4");
-    if (saved === null) {
-      return 0;
-    }
-    const initialValue = JSON.parse(saved);
-    return initialValue || 0;
-  });
+  const [totalMetricTons, setTotalMetricTons] = useState(0);
+  const [v1, setV1] = useState(0);
+  const [v2, setV2] = useState(0);
+  const [v3, setV3] = useState(0);
+  const [v4, setV4] = useState(0);
   return (
     //  <section className="flex flex-1 flex-grow gap-4">
     //    <div className="flex flex-col flex-1 gap-4">
@@ -134,7 +111,18 @@ export default function Home() {
     //  </section>
 
     <TotalMetricTonsContext.Provider
-      value={{ totalMetricTons, setTotalMetricTons, v1, v2, v3, v4, setV1, setV2, setV3, setV4 }}
+      value={{
+        totalMetricTons,
+        setTotalMetricTons,
+        v1,
+        v2,
+        v3,
+        v4,
+        setV1,
+        setV2,
+        setV3,
+        setV4,
+      }}
     >
       <div className="grid grid-cols-10 max-h-[89vh] grid-rows-3 gap-4">
         <div className="col-span-4 row-span-2 ">
@@ -147,7 +135,12 @@ export default function Home() {
           <Tips />
         </div>
         <div className="col-span-2 col-start-5 row-span-1 row-start-1 ">
-          <Comparison val1={100-v1*10} val2={100-v2*10} val3={100-v3*10} val4={100-v4*10} />
+          <Comparison
+            val1={100 - v1 * 10}
+            val2={100 - v2 * 10}
+            val3={100 - v3 * 10}
+            val4={100 - v4 * 10}
+          />
         </div>
         <div className="col-span-2 col-start-5 row-span-1 row-start-2 ">
           <CarbonFootPrintCard />
