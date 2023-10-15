@@ -11,6 +11,14 @@ import { createContext, useEffect, useState } from "react";
 export const TotalMetricTonsContext = createContext({
   totalMetricTons: 0,
   setTotalMetricTons: (value: number) => {},
+  v1: 0,
+  setV1: (value: number) => {},
+  v2: 0,
+  setV2: (value: number) => {},
+  v3: 0,
+  setV3: (value: number) => {},
+  v4: 0,
+  setV4: (value: number) => {},
 });
 
 const initialData = [
@@ -39,6 +47,22 @@ export default function Home() {
       "currentMetricTonsPerYear",
       JSON.stringify(mockStorageData.currentMetricTonsPerYear)
     );
+    localStorage.setItem(
+      "v1",
+      JSON.stringify(mockStorageData.v1)
+    );
+    localStorage.setItem(
+      "v2",
+      JSON.stringify(mockStorageData.v2)
+    );
+    localStorage.setItem(
+      "v3",
+      JSON.stringify(mockStorageData.v3)
+    );
+    localStorage.setItem(
+      "v4",
+      JSON.stringify(mockStorageData.v4)
+    );
   }, []);
 
   const [totalMetricTons, setTotalMetricTons] = useState(() => {
@@ -50,7 +74,42 @@ export default function Home() {
     const initialValue = JSON.parse(saved);
     return initialValue || 0;
   });
-
+  const [v1, setV1] = useState(() => {
+    // get from local storage totalmetrictons if saved
+    const saved = localStorage?.getItem("v1");
+    if (saved === null) {
+      return 0;
+    }
+    const initialValue = JSON.parse(saved);
+    return initialValue || 0;
+  });
+  const [v2, setV2] = useState(() => {
+    // get from local storage totalmetrictons if saved
+    const saved = localStorage?.getItem("v2");
+    if (saved === null) {
+      return 0;
+    }
+    const initialValue = JSON.parse(saved);
+    return initialValue || 0;
+  });
+  const [v3, setV3] = useState(() => {
+    // get from local storage totalmetrictons if saved
+    const saved = localStorage?.getItem("v3");
+    if (saved === null) {
+      return 0;
+    }
+    const initialValue = JSON.parse(saved);
+    return initialValue || 0;
+  });
+  const [v4, setV4] = useState(() => {
+    // get from local storage totalmetrictons if saved
+    const saved = localStorage?.getItem("v4");
+    if (saved === null) {
+      return 0;
+    }
+    const initialValue = JSON.parse(saved);
+    return initialValue || 0;
+  });
   return (
     //  <section className="flex flex-1 flex-grow gap-4">
     //    <div className="flex flex-col flex-1 gap-4">
@@ -75,7 +134,7 @@ export default function Home() {
     //  </section>
 
     <TotalMetricTonsContext.Provider
-      value={{ totalMetricTons, setTotalMetricTons }}
+      value={{ totalMetricTons, setTotalMetricTons, v1, v2, v3, v4, setV1, setV2, setV3, setV4 }}
     >
       <div className="grid grid-cols-10 max-h-[89vh] grid-rows-3 gap-4">
         <div className="col-span-4 row-span-2 ">
@@ -88,7 +147,7 @@ export default function Home() {
           <Tips />
         </div>
         <div className="col-span-2 col-start-5 row-span-1 row-start-1 ">
-          <Comparison val1={50} val2={30} val3={70} val4={40} />
+          <Comparison val1={100-v1*10} val2={100-v2*10} val3={100-v3*10} val4={100-v4*10} />
         </div>
         <div className="col-span-2 col-start-5 row-span-1 row-start-2 ">
           <CarbonFootPrintCard />
@@ -135,14 +194,18 @@ export const mockStorageData = {
     },
   ],
   currentMetricTonsPerYear: 10,
+  v1: 0,
+  v2: 0,
+  v3: 0,
+  v4: 0,
   currentMetrics: {
     waste: {
       trashPerWeek: "5",
       weightUnit: "pounds",
-      recyclesAluminumSteelCans: true,
+      recyclesAluminumSteelCans: false,
       recyclesPlastic: false,
-      recyclesGlass: true,
-      recyclesNewspaper: true,
+      recyclesGlass: false,
+      recyclesNewspaper: false,
       recyclesMagazines: false,
     },
     transportation: {
@@ -153,11 +216,11 @@ export const mockStorageData = {
       flightsPerYear: "2",
     },
     other: {
-      isVegetarian: true,
-      lowFlowShowerhead: true,
-      isVolunteer: true,
+      isVegetarian: false,
+      lowFlowShowerhead: false,
+      isVolunteer: false,
       shoppingHabits: "sometimes",
-      isRecycledProducts: true,
+      isRecycledProducts: false,
       isOrganicProduce: false,
     },
     energy: {

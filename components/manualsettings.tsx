@@ -89,7 +89,7 @@ export interface EnergyFormProps {
 }
 
 export const ManualSettings = () => {
-  const {totalMetricTons, setTotalMetricTons} = useContext(TotalMetricTonsContext);
+  const {totalMetricTons, setTotalMetricTons, v1, setV1, v2, setV2, v3, setV3, v4, setV4} = useContext(TotalMetricTonsContext);
   const itemClasses = {
     base: "py-0 w-full",
     title: "font-normal text-medium",
@@ -238,11 +238,13 @@ export const ManualSettings = () => {
     calcWaste();
     calcTransportation();
     calcOther();
-    console.log(transportationTotal + energyTotal + wasteTotal + otherTotal);
+    setV1(transportationTotal);
+    setV2(energyTotal);
+    setV3(wasteTotal);
+    setV4(otherTotal);
     setTotalMetricTons(
       transportationTotal + energyTotal + wasteTotal + otherTotal
     );
-    console.log(totalMetricTons);
   };
   useEffect(() => {
     // get from local storage all state variables
@@ -299,7 +301,6 @@ export const ManualSettings = () => {
 
   return (
     <div>
-      <Button onClick={calcTotal}>Click</Button>
       <Accordion
         showDivider={false}
         className="flex flex-col w-full p-2"
