@@ -54,6 +54,9 @@ export default function AboutPage() {
 				<h2 className="text-small text-default-500">
 						<em>Our estimates are based on data and calculations provided by the United States Environmental Protection Agency.</em>
 					</h2>
+				<h2 className={subtitle({ class: "mt-2" })}>
+				 	GreenJournal came to be by combining the SUSTAIN, INNOVATE, DIGITAL ART, and EDU tracks while also staying loyal to this year's theme, a Journal of Memories.
+				</h2>
 			</section>
 		);
 }
