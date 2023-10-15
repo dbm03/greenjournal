@@ -34,7 +34,7 @@ export default function Chat() {
           <Input label="Say something..." value={input} onChange={handleInputChange}/>
       </form>
       </div>
-      <Spacer y={16}/>
+      <Spacer/>
     </div>
   );
 }
