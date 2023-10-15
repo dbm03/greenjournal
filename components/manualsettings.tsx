@@ -214,7 +214,7 @@ export const ManualSettings = () => {
   };
 
   let wasteTotal =
-    (Number(trashPerWeek) * 52 * 3.02 -
+    (Number(trashPerWeek) * 52 * 3.02 * (weightUnit.has("kilograms") ? 2.20462 : 1) -
       (recyclesAluminumSteelCans ? 89 : 0) -
       (recyclesPlastic ? 36 : 0) -
       (recyclesGlass ? 25 : 0) -
