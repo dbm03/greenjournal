@@ -20,26 +20,33 @@ export default function Globe({ ...props }) {
   const POS_OFFSET = 1.6;
   const ROTATION_SPEED = 0.5;
   const [landColor, setLandColor] = useState('#11ffc3');
+  const [cloudColor, setCloudColor] = useState('#ffffff');
   const colorQueueRef = useRef([]);
   let frameCount = 0;
 
   const landColorRef = useRef(new THREE.Color("#11ffc3"));
+  const cloudColorRef = useRef(new THREE.Color("#ffffff"));
 
   useEffect(() => {
     // Calculate the target color based on totalMetricTons
     const targetColor = calculateTargetColor(totalMetricTons);
-
+    const targetCloudColor = calculateCloudTargetColor(totalMetricTons);
     // Create a tween to smoothly transition landColor
     const tween = new TWEEN.Tween(landColorRef.current)
       .to(targetColor, 2000) // Change to your desired duration
       .easing(TWEEN.Easing.Quadratic.Out);
 
+    const tween2 = new TWEEN.Tween(cloudColorRef.current)
+      .to(targetCloudColor, 4000) // Change to your desired duration
+      .easing(TWEEN.Easing.Quadratic.Out);
     // Start the tween when totalMetricTons changes
     tween.start();
+    tween2.start();
 
     return () => {
       // Stop the tween when the component unmounts
       tween.stop();
+      tween2.stop();
     };
   }, [totalMetricTons]);
 
@@ -48,9 +55,14 @@ export default function Globe({ ...props }) {
     return totalMetricTons < 10 ? new THREE.Color("#11ffc3") : totalMetricTons < 20 ? new THREE.Color("#dddddd") : new THREE.Color("#888888");
   };
 
+  const calculateCloudTargetColor = (totalMetricTons) => {
+    return totalMetricTons < 10 ? new THREE.Color("#ffffff") : totalMetricTons < 20 ? new THREE.Color("#eeeeee") : new THREE.Color("#6d6d6d");
+  }
+
   // Use useFrame to animate the rotation of the globe
   useFrame(() => {
     TWEEN.update();
+    setCloudColor(cloudColorRef.current.getStyle());
     setLandColor(landColorRef.current.getStyle());
     console.log(totalMetricTons);
     if (globeGroupRef.current) {
@@ -64,11 +76,11 @@ export default function Globe({ ...props }) {
     <>
       <color attach="background" args={["#74757a"]} />
       <group {...props} dispose={null}>
-        <group ref={clouds} position={[0, -130, 153]} rotation={[-0.84, 0, 0]}>
+        <group ref={clouds} position={[0, -130, 142]} rotation={[-0.84, 0, 0]}>
             <mesh
               name="Basic 2"
               geometry={nodes['Basic 2'].geometry}
-              material={nodes['Basic 2'].material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[-100.37 * POS_OFFSET, 127.88 * POS_OFFSET, -87.03 * POS_OFFSET]}
@@ -78,7 +90,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic 3"
               geometry={nodes['Basic 3'].geometry}
-              material={nodes['Basic 3'].material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[-30.11 * POS_OFFSET, 276.21 * POS_OFFSET, -101.25 * POS_OFFSET]}
@@ -88,7 +100,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic 4"
               geometry={nodes['Basic 4'].geometry}
-              material={nodes['Basic 4'].material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[-144.16 * POS_OFFSET, 228.62 * POS_OFFSET, 44.29 * POS_OFFSET]}
@@ -98,7 +110,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic"
               geometry={nodes.Basic.geometry}
-              material={nodes.Basic.material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[-36.28 * POS_OFFSET, 203.34 * POS_OFFSET, 194.1 * POS_OFFSET]}
@@ -108,7 +120,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic_+_1"
               geometry={nodes['Basic_+_1'].geometry}
-              material={nodes['Basic_+_1'].material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[-124.73 * POS_OFFSET, 104.39 * POS_OFFSET, 118.57 * POS_OFFSET]}
@@ -118,7 +130,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic_+_11"
               geometry={nodes['Basic_+_11'].geometry}
-              material={nodes['Basic_+_11'].material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[63.74 * POS_OFFSET, 279.65 * POS_OFFSET, 89.44 * POS_OFFSET]}
@@ -128,7 +140,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic_+_12"
               geometry={nodes['Basic_+_12'].geometry}
-              material={nodes['Basic_+_12'].material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[24 * POS_OFFSET, 42.66 * POS_OFFSET, 120.5 * POS_OFFSET]}
@@ -138,7 +150,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic_+_13"
               geometry={nodes['Basic_+_13'].geometry}
-              material={nodes['Basic_+_13'].material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[72.93 * POS_OFFSET, 34.2 * POS_OFFSET, -9.26 * POS_OFFSET]}
@@ -148,7 +160,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic 21"
               geometry={nodes['Basic 21'].geometry}
-              material={nodes['Basic 21'].material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[-84.21, 241.82, -88.76]}
@@ -158,7 +170,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic1"
               geometry={nodes.Basic1.geometry}
-              material={nodes.Basic1.material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[36.6, 312.14, 5.8]}
@@ -168,7 +180,7 @@ export default function Globe({ ...props }) {
             <mesh
               name="Basic2"
               geometry={nodes.Basic2.geometry}
-              material={nodes.Basic2.material}
+              material={new THREE.MeshMatcapMaterial({ color : cloudColor})}
               castShadow
               receiveShadow
               position={[136.16, 181.23, -21.18]}
