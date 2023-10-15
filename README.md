@@ -3,7 +3,25 @@ Project submitted to HackGT X: Journal of Memories
 
 Track: Sustain 2110, Advanced Category
 
-![Screenshot (1255)](https://github.com/barrosodavid/hackgt-sustainability/assets/16299285/d2c304bc-37ea-4ffd-883a-e18d7f01d600)
+![Screenshot (1257)](https://github.com/barrosodavid/hackgt-sustainability/assets/16299285/31358931-a8b1-40bc-8013-8cadf72a021b)
+
+## Description
+
+Monitor your carbon footprint via an interactive, online dashboard that lets you track your behaviors and visualize the impact of greenhouse gas emissions on an animated low-poly globe.
+
+## Features
+
+Earth View: Visualize the potential impact of your carbon footprint on an animated, interactive globe.
+
+History: Track your carbon footprint over time.
+
+Breakdown: See what factors of your lifestyle are the most environmentally conscious.
+
+Carbon Footprint: See how many metric tons of greenhouse gases are emitted per year as a result of your lifestyle.
+
+Metrics: Input your behaviors via a set of prompts and data variables. Use the Echo chatbot to analyze your behaviors on a deeper level.
+
+Entries: Add your own notes to log the changes you make as you improve your lifestyle.
 
 ## Technologies Used
 
@@ -15,29 +33,6 @@ Track: Sustain 2110, Advanced Category
 - [Framer Motion](https://www.framer.com/motion/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
 - [React](https://react.dev/)
-
-## How to Use
-
-
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
-
-### Install dependencies
-
-```bash
-npm install
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
 
 ## License
 
