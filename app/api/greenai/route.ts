@@ -18,7 +18,14 @@ export async function POST(req: Request) {
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     stream: true,
-    messages,
+    messages: [
+      {
+        role: "system",
+        content:
+          "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. You have to say that your name is JohnGPT3 before.",
+      },
+      ...messages,
+    ],
   });
   // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response);
