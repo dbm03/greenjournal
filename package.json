@@ -28,6 +28,7 @@
     "@splinetool/r3f-spline": "^1.0.2",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.481",
+    "@tweenjs/tween.js": "^21.0.0",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",

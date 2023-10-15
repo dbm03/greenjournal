@@ -11,7 +11,6 @@ import {TotalMetricTonsContext} from "@/app/page";
 
 const CarbonFootPrintCard = ({ metricTons = 4.3 }) => {
   const {totalMetricTons, setTotalMetricTons} = useContext(TotalMetricTonsContext);
-
   return (
     <Card
       shadow="sm"
@@ -22,8 +21,8 @@ const CarbonFootPrintCard = ({ metricTons = 4.3 }) => {
         <h4 className="text-xl font-bold uppercase">Carbon Footprint</h4>
       </CardHeader>
       <CardBody style={noOverflow} className="flex flex-col items-center justify-center">
-        <span className="font-nova text-8xl text-success">{Math.round(totalMetricTons*10)/10}</span>
-        <p>metric tons</p>
+        <span className={totalMetricTons < 10 ? "font-nova text-8xl text-success" : totalMetricTons < 16 ? "font-nova text-8xl text-normal" : "font-nova text-8xl text-default"} >{Math.round(totalMetricTons*10)/10}</span>
+        <p>metric tons per year</p>
       </CardBody>
     </Card>
   );
