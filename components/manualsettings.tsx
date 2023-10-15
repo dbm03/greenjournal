@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Accordion, AccordionItem, Selection } from "@nextui-org/react";
 import EnergyForm from "@/components/energy-card";
 
@@ -13,6 +13,7 @@ import { CarIcon } from "./CarIcon.jsx";
 import { EnergyIcon } from "./EnergyIcon.jsx";
 import { WasteIcon } from "./WasteIcon.jsx";
 import { OtherIcon } from "./OtherIcon.jsx";
+import { localStorageSchema } from "@/app/page";
 
 export interface WasteFormProps {
   trashPerWeek: string;
@@ -187,6 +188,59 @@ export const ManualSettings = () => {
   const handleFlightsPerYear = (value: string) => {
     if (Number(value) >= 0) setFlightsPerYear(value);
   };
+
+  useEffect(() => {
+    // get from local storage all state variables
+
+    const json = localStorage?.getItem("currentMetrics") ?? "{}";
+    const data: localStorageSchema["currentMetrics"] = JSON.parse(json);
+    const energy = data.energy;
+    console.log(energy);
+    if (energy !== undefined) {
+      setElectricityBill(energy.electricityBill);
+      setElectricityBillUnit(new Set([energy.electricityBillUnit]));
+      setNaturalGas(energy.naturalGas);
+      setNaturalGasUnit(new Set([energy.naturalGasUnit]));
+      setFuelOil(energy.fuelOil);
+      setFuelOilUnit(new Set([energy.fuelOilUnit]));
+      setPropane(energy.propane);
+      setPropaneUnit(new Set([energy.propaneUnit]));
+      setIsGreenEnergyHouse(energy.isGreenEnergyHouse);
+    }
+    const transportation = data.transportation;
+    if (transportation !== undefined) {
+      setFlightsPerYear(transportation.flightsPerYear);
+      setMilesPerGallon(transportation.milesPerGallon);
+      setMilesPerWeekPublicTransportation(
+        transportation.milesPerWeekPublicTransportation
+      );
+      setMilesPerWeekVehicle(transportation.milesPerWeekVehicle);
+      setRegularVehicleMaintenance(transportation.isRegularVehicleMaintenance);
+    }
+
+    const waste = data.waste;
+    if (waste !== undefined) {
+      setTrashPerWeek(waste.trashPerWeek);
+      setWeightUnit(new Set([waste.weightUnit]));
+      setRecyclesAluminumSteelCans(waste.recyclesAluminumSteelCans);
+      setRecyclesGlass(waste.recyclesGlass);
+      setRecyclesMagazines(waste.recyclesMagazines);
+      setRecyclesNewspaper(waste.recyclesNewspaper);
+      setRecyclesPlastic(waste.recyclesPlastic);
+    }
+
+    const other = data.other;
+    if (other !== undefined) {
+      setIsVegetarian(other.isVegetarian);
+      setIsVolunteer(other.isVolunteer);
+      setLowFlowShowerhead(other.lowFlowShowerhead);
+      setShoppingHabits(new Set(other.shoppingHabits));
+      setIsRecycledProducts(other.isRecycledProducts);
+      setIsOrganicProduce(other.isOrganicProduce);
+    }
+
+    // set state variables
+  }, []);
 
   return (
     <div>

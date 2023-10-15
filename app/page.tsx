@@ -6,9 +6,12 @@ import CarbonFootPrintCard from "@/components/carbonfootprintcard";
 import JournalCard from "@/components/journalcard";
 import Comparison from "@/components/comparison";
 import Tips from "@/components/tips";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-const TotalMetricTonsContext = createContext();
+export const TotalMetricTonsContext = createContext({
+  totalMetricTons: 0,
+  setTotalMetricTons: (value: number) => {},
+});
 
 const initialData = [
   { time: "2018-12-22", value: 32.51 },
@@ -24,7 +27,29 @@ const initialData = [
 ];
 
 export default function Home() {
-  const [totalMetricTons, setTotalMetricTons] = useState(0);
+  // mock user storage data
+
+  useEffect(() => {
+    localStorage.setItem(
+      "currentMetrics",
+      JSON.stringify(mockStorageData.currentMetrics)
+    );
+    localStorage.setItem("logs", JSON.stringify(mockStorageData.logs));
+    localStorage.setItem(
+      "currentMetricTonsPerYear",
+      JSON.stringify(mockStorageData.currentMetricTonsPerYear)
+    );
+  }, []);
+
+  const [totalMetricTons, setTotalMetricTons] = useState(() => {
+    // get from local storage totalmetrictons if saved
+    const saved = localStorage?.getItem("currentMetricTonsPerYear");
+    if (saved === null) {
+      return 0;
+    }
+    const initialValue = JSON.parse(saved);
+    return initialValue || 0;
+  });
 
   return (
     //  <section className="flex flex-1 flex-grow gap-4">
@@ -49,7 +74,9 @@ export default function Home() {
     //    </div>
     //  </section>
 
-    <TotalMetricTonsContext.Provider value={{ totalMetricTons }}>
+    <TotalMetricTonsContext.Provider
+      value={{ totalMetricTons, setTotalMetricTons }}
+    >
       <div className="grid grid-cols-10 max-h-[89vh] grid-rows-3 gap-4">
         <div className="col-span-4 row-span-2 ">
           <EarthViewCard />
@@ -73,3 +100,76 @@ export default function Home() {
     </TotalMetricTonsContext.Provider>
   );
 }
+
+export type localStorageSchema = typeof mockStorageData;
+
+export const mockStorageData = {
+  logs: [
+    {
+      time: "2023-10-01",
+      value: 10,
+    },
+    {
+      time: "2023-10-02",
+      value: 9.5,
+    },
+    {
+      time: "2023-10-03",
+      value: 9.8,
+    },
+    {
+      time: "2023-10-04",
+      value: 10.2,
+    },
+    {
+      time: "2023-10-05",
+      value: 10.1,
+    },
+    {
+      time: "2023-10-06",
+      value: 9.7,
+    },
+    {
+      time: "2023-10-07",
+      value: 9.9,
+    },
+  ],
+  currentMetricTonsPerYear: 10,
+  currentMetrics: {
+    waste: {
+      trashPerWeek: "5",
+      weightUnit: "pounds",
+      recyclesAluminumSteelCans: true,
+      recyclesPlastic: false,
+      recyclesGlass: true,
+      recyclesNewspaper: true,
+      recyclesMagazines: false,
+    },
+    transportation: {
+      isRegularVehicleMaintenance: true,
+      milesPerWeekVehicle: "200",
+      milesPerGallon: "30",
+      milesPerWeekPublicTransportation: "50",
+      flightsPerYear: "2",
+    },
+    other: {
+      isVegetarian: true,
+      lowFlowShowerhead: true,
+      isVolunteer: true,
+      shoppingHabits: "sometimes",
+      isRecycledProducts: true,
+      isOrganicProduce: false,
+    },
+    energy: {
+      naturalGas: "1000",
+      naturalGasUnit: "cubic-feet",
+      electricityBill: "80",
+      electricityBillUnit: "kilowatt-hours",
+      isGreenEnergyHouse: true,
+      fuelOil: "0",
+      fuelOilUnit: "gallons",
+      propane: "0",
+      propaneUnit: "gallons",
+    },
+  },
+};
