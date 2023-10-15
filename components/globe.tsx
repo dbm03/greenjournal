@@ -80,7 +80,7 @@ export default function Globe({ ...props }) {
     <>
       <color attach="background" args={["#74757a"]} />
       <group {...props} dispose={null}>
-        <group ref={planes} position={[flights > 0 ? 4000 : 2.24, 5.7, 3.29]} rotation={[0, Math.PI/4, Math.PI/2]}>
+        <group ref={planes} position={[flights == 0 ? 4000 : 2.24, 5.7, 3.29]} rotation={[0, Math.PI/4, Math.PI/2]}>
           <mesh
               name="Ellipse"
               geometry={nodes.Ellipse.geometry}
