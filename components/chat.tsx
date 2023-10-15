@@ -35,10 +35,6 @@ export default function Chat() {
       </form>
       </div>
     
-<<<<<<< HEAD
-      <Spacer/>
-=======
->>>>>>> 983564d (better prompt engineering)
     </div>
   );
 }
