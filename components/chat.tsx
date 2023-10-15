@@ -49,11 +49,17 @@ export default function Chat() {
   return (
     <div>
       <div className="px-3">
+        <div>
+          <span className="text-success">Echo: </span> Hi I am Echo, your
+          personal carbon footprint assistant. I can help you track the change
+          in your carbon footprint and suggest ways to reduce it. Type your
+          message below to get started.
+        </div>
         {messages.map((m) => {
           if (m.role === "user") {
             return (
               <div key={m.id}>
-                {m.role === "user" ? "User: " : "GreenAI: "}
+                {"User: "}
                 {m.content}
               </div>
             );
@@ -81,7 +87,7 @@ export default function Chat() {
       <div className="flex flex-col items-center justify-center gap-1">
         <form onSubmit={handleSubmit} className="w-full px-3">
           <Input
-            label="Type your entry..."
+            label="Say something..."
             value={input}
             onChange={handleInputChange}
           />
