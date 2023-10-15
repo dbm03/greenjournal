@@ -1,5 +1,5 @@
 "use client";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Accordion, AccordionItem, Selection, Button } from "@nextui-org/react";
 import EnergyForm from "@/components/energy-card";
 
@@ -15,8 +15,8 @@ import { WasteIcon } from "./WasteIcon.jsx";
 import { OtherIcon } from "./OtherIcon.jsx";
 import { localStorageSchema } from "@/app/page";
 
-import {useContext} from "react";
-import {TotalMetricTonsContext} from "@/app/page";
+import { useContext } from "react";
+import { TotalMetricTonsContext } from "@/app/page";
 
 export interface WasteFormProps {
   trashPerWeek: string;
@@ -89,7 +89,18 @@ export interface EnergyFormProps {
 }
 
 export const ManualSettings = () => {
-  const {totalMetricTons, setTotalMetricTons, v1, setV1, v2, setV2, v3, setV3, v4, setV4} = useContext(TotalMetricTonsContext);
+  const {
+    totalMetricTons,
+    setTotalMetricTons,
+    v1,
+    setV1,
+    v2,
+    setV2,
+    v3,
+    setV3,
+    v4,
+    setV4,
+  } = useContext(TotalMetricTonsContext);
   const itemClasses = {
     base: "py-0 w-full",
     title: "font-normal text-medium",
@@ -103,12 +114,6 @@ export const ManualSettings = () => {
     overflowY: "scroll",
     height: "290px",
   };
-
-  // ==== Output Variables ====
-  const [transportationTotal, setTransportationTotal] = useState<number>(0);
-  const [energyTotal, setEnergyTotal] = useState<number>(0);
-  const [wasteTotal, setWasteTotal] = useState<number>(0);
-  const [otherTotal, setOtherTotal] = useState<number>(0);
 
   // ==== Energy form state ====
   const [electricityBill, setElectricityBill] = useState<string>("");
@@ -140,15 +145,21 @@ export const ManualSettings = () => {
   };
 
   const handleEnergySubmit = () => {};
-  const calcEnergy = () => {
-    setEnergyTotal(12 * (
-      (naturalGasUnit.has("dollars") ? 1/10.68 : 1) * 119.58 +
-      (fuelOilUnit.has("dollars") ? 1/4.02 : 1) * 22.61 +
-      (propaneUnit.has("gallons") ? 1/2.47 : 1) * 12.43 +
-      (isGreenEnergyHouse ? 0.5 : 1) * (electricityBillUnit.has("dollars") ? 1/0.1188 : 1) / 1000 * 1238.516 +
-      (isGreenEnergyHouse ? 0.5 : 1) * (electricityBillUnit.has("dollars") ? 1/0.1188 : 1) / 1000 * 727.603
-    )/2204.62)
-  }
+  let energyTotal =
+    (12 *
+      ((naturalGasUnit.has("dollars") ? 1 / 10.68 : 1) * 119.58 +
+        (fuelOilUnit.has("dollars") ? 1 / 4.02 : 1) * 22.61 +
+        (propaneUnit.has("gallons") ? 1 / 2.47 : 1) * 12.43 +
+        (((isGreenEnergyHouse ? 0.5 : 1) *
+          (electricityBillUnit.has("dollars") ? 1 / 0.1188 : 1)) /
+          1000) *
+          1238.516 +
+        (((isGreenEnergyHouse ? 0.5 : 1) *
+          (electricityBillUnit.has("dollars") ? 1 / 0.1188 : 1)) /
+          1000) *
+          727.603)) /
+    2204.62;
+
   // ==== Other form state ====
   const [isVegetarian, setIsVegetarian] = useState<boolean>(false);
   const [lowFlowShowerhead, setLowFlowShowerhead] = useState<boolean>(false);
@@ -157,19 +168,16 @@ export const ManualSettings = () => {
   const [isRecycledProducts, setIsRecycledProducts] = useState<boolean>(false);
   const [isOrganicProduce, setIsOrganicProduce] = useState<boolean>(false);
 
-  const calcOther = () => {
-      setOtherTotal(
-        (
-          (shoppingHabits.has("rarely") ? 200 : 0) + 
-          (shoppingHabits.has("sometimes") ? 600 : 0) + 
-          (shoppingHabits.has("often") ? 1000 : 0) -
-          (isVegetarian ? 1200 : 0) -
-          (lowFlowShowerhead ? 350 : 0) -
-          (isVolunteer ? 500 : 0) -
-          (isRecycledProducts ? 500 : 0) -
-          (isOrganicProduce ? 500 : 0)
-        )/2204.62)
-  }
+  let otherTotal =
+    ((shoppingHabits.has("rarely") ? 200 : 0) +
+      (shoppingHabits.has("sometimes") ? 600 : 0) +
+      (shoppingHabits.has("often") ? 1000 : 0) -
+      (isVegetarian ? 1200 : 0) -
+      (lowFlowShowerhead ? 350 : 0) -
+      (isVolunteer ? 500 : 0) -
+      (isRecycledProducts ? 500 : 0) -
+      (isOrganicProduce ? 500 : 0)) /
+    2204.62;
 
   // ==== Waste form state ====
   const [trashPerWeek, setTrashPerWeek] = useState<string>("");
@@ -184,19 +192,15 @@ export const ManualSettings = () => {
   const handleTrashPerWeek = (value: string) => {
     if (Number(value) >= 0) setTrashPerWeek(value);
   };
-  const calcWaste = () => {
-    setWasteTotal(
-      (Number(trashPerWeek) * 52 * 3.02 - 
-      (recyclesAluminumSteelCans ? 89 : 0) - 
-      (recyclesPlastic ? 36 : 0) - 
-      (recyclesGlass ? 25 : 0) - 
-      (recyclesNewspaper ? 113 : 0) - 
-      (recyclesMagazines ? 27 : 0)
-      )
-      /2204.62
-    );
-  };
 
+  let wasteTotal =
+    (Number(trashPerWeek) * 52 * 3.02 -
+      (recyclesAluminumSteelCans ? 89 : 0) -
+      (recyclesPlastic ? 36 : 0) -
+      (recyclesGlass ? 25 : 0) -
+      (recyclesNewspaper ? 113 : 0) -
+      (recyclesMagazines ? 27 : 0)) /
+    2204.62;
   // ==== Transportation form state ====
   const [isRegularVehicleMaintenance, setRegularVehicleMaintenance] =
     useState<boolean>(false);
@@ -223,26 +227,22 @@ export const ManualSettings = () => {
   const handleFlightsPerYear = (value: string) => {
     if (Number(value) >= 0) setFlightsPerYear(value);
   };
-  const calcTransportation = () => {
-    setTransportationTotal(
-      ((isRegularVehicleMaintenance ? 191 : 0) + 
-      Number(milesPerWeekVehicle) * 52 / Number(milesPerGallon) * 19.6 * 1.01 / (isRegularVehicleMaintenance ? (1-0.04) : 1)+
-      Number(milesPerWeekPublicTransportation) * 52 * 14 / 100 + 
-      Number(flightsPerYear) * 90 * 3)
-      /2204.62
-    );
-  };
+
+  let transportationTotal =
+    ((isRegularVehicleMaintenance ? 191 : 0) +
+      (((Number(milesPerWeekVehicle) * 52) / Number(milesPerGallon)) *
+        19.6 *
+        1.01) /
+        (isRegularVehicleMaintenance ? 1 - 0.04 : 1) +
+      (Number(milesPerWeekPublicTransportation) * 52 * 14) / 100 +
+      Number(flightsPerYear) * 90 * 3) /
+    2204.62;
 
   const calcTotal = () => {
-    calcEnergy();
-    calcWaste();
-    calcTransportation();
-    calcOther();
     setV1(transportationTotal);
     setV2(energyTotal);
     setV3(wasteTotal);
     setV4(otherTotal);
-    //console.log("T: " + v1 + " E: " + v2 + " W: " + v3 + " O: " + v4); 
     setTotalMetricTons(
       transportationTotal + energyTotal + wasteTotal + otherTotal
     );

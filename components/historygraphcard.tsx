@@ -1,13 +1,13 @@
 "use client";
 
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
-import { createChart, ColorType } from "lightweight-charts";
+import { createChart, ColorType, LineStyle } from "lightweight-charts";
 import React, { useEffect, useRef } from "react";
 import CSS from "csstype";
 
 const hidden: CSS.Properties = {
   overflow: "hidden",
-}
+};
 
 const HistoryGraphCard = (props) => {
   const {
@@ -44,6 +44,31 @@ const HistoryGraphCard = (props) => {
       bottomColor: areaBottomColor,
     });
     newSeries.setData(data);
+
+    // 16 avg in the US,
+    // 4 global
+
+    var avgUSALine = {
+      price: 16,
+      color: "#dc8565",
+      lineWidth: 2,
+      lineStyle: LineStyle.Solid,
+      axisLabelVisible: true,
+      title: "Average (US)",
+    };
+
+    newSeries.createPriceLine(avgUSALine);
+
+    var avgGlobalLine = {
+      price: 4,
+      color: "#fff",
+      lineWidth: 2,
+      lineStyle: LineStyle.Solid,
+      axisLabelVisible: true,
+      title: "Average (Global)",
+    };
+
+    newSeries.createPriceLine(avgGlobalLine);
 
     window.addEventListener("resize", handleResize);
 
