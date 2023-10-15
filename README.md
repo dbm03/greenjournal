@@ -4,7 +4,8 @@ Project submitted to HackGT X: Journal of Memories
 
 Track: Sustain 2110, Advanced Category
 
-![Screenshot (1257)](https://github.com/barrosodavid/hackgt-sustainability/assets/16299285/31358931-a8b1-40bc-8013-8cadf72a021b)
+![Screenshot (1256)](/assets/Screenshot_1256.png)
+![Screenshot (1257)](/assets/Screenshot_1257.png)
 
 ## Description
 
