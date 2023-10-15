@@ -147,7 +147,7 @@ export default function Home() {
           <Tips />
         </div>
         <div className="col-span-2 col-start-5 row-span-1 row-start-1 ">
-          <Comparison val1={100-v1*10} val2={100-v2*10} val3={100-v3*10} val4={100-v4*10} />
+          <Comparison val1={100-v1*10} val2={100-(v2-0.15)*1000} val3={100-v3*20} val4={100-(v4+1)*50} />
         </div>
         <div className="col-span-2 col-start-5 row-span-1 row-start-2 ">
           <CarbonFootPrintCard />
@@ -224,9 +224,9 @@ export const mockStorageData = {
       isOrganicProduce: false,
     },
     energy: {
-      naturalGas: "1000",
+      naturalGas: "100",
       naturalGasUnit: "cubic-feet",
-      electricityBill: "80",
+      electricityBill: "200",
       electricityBillUnit: "kilowatt-hours",
       isGreenEnergyHouse: true,
       fuelOil: "0",

@@ -242,6 +242,7 @@ export const ManualSettings = () => {
     setV2(energyTotal);
     setV3(wasteTotal);
     setV4(otherTotal);
+    //console.log("T: " + v1 + " E: " + v2 + " W: " + v3 + " O: " + v4); 
     setTotalMetricTons(
       transportationTotal + energyTotal + wasteTotal + otherTotal
     );
