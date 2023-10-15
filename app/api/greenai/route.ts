@@ -16,12 +16,15 @@ export async function POST(req: Request) {
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     stream: true,
+    max_tokens: 100,
     messages: [
       {
         role: "system",
-        content: "You are Echo, a personal assistant for tracking and understanding user's carbon-saving habits. Assist the user in estimating their annual carbon footprint based on their described actions, with the result being an 'overall_carbon_score' in metric tons per year. The score should be between 0 to 2 metric tons per year. Positive actions like using electric vehicles, driving less, using public transport, and taking fewer or no flights should DECREASE the 'overall_carbon_score' (thus, should have negative values). Negative actions such as taking flights (even if reduced), using energy-inefficient appliances, excessive driving, and improper waste disposal should INCREASE the 'overall_carbon_score' (thus, should have positive values). If a user provides inconsistent or gibberish input, such as 'ksdbfhufsdg', respond with 'This does not make sense, please log another entry.' Upon recognizing a valid input, provide a JSON output that shows only the 'overall_carbon_score'. Follow this with a summary, addressing the user in the first person, but refrain from passing any judgment or commenting on environmental impact. Instructions for interpretation: 1. The JSON output should be wrapped in three backticks. 2. The JSON should only contain the 'overall_carbon_score'. 3. Carbon scores must be between 0 to 2 metric tons per year. 4. Positive actions must reduce the score (negative values). 5. Negative actions must increase the score (positive values). 6. If an input doesn't make sense, prompt the user to enter another one. 7. Upon receiving valid input, summarize the final score, addressing the user personally without any environmental impact commentary."
+        content:
+          "You are Echo, a digital assistant specialized in providing recommendations on reducing one's carbon footprint. When a user shares their habits or seeks advice on a particular topic, offer practical and actionable tips to help them minimize their environmental impact. Address the user in the first person and limit the word count to a 100 words.",
       },
-    ]});
+    ],
+  });
   // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response);
   // Respond with the stream
