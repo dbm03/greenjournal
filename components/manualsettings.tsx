@@ -350,7 +350,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="1"
           aria-label="Transportation"
-          startContent={<CarIcon className="text-success" />}
+          startContent={<CarIcon className={(milesPerWeekVehicle !== "" && milesPerGallon !== "" && milesPerWeekPublicTransportation !== "" && flightsPerYear != "") ? "text-success" : ""} />}
           subtitle={
             <p className="flex">
               <em>driving and traveling</em>
@@ -382,7 +382,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="2"
           aria-label="Home Energy"
-          startContent={<EnergyIcon className="text-success" />}
+          startContent={<EnergyIcon className={(electricityBill !== "" && naturalGas !== "" && fuelOil !== "" && propane !== "") ? "text-success" : ""} />}
           subtitle={
             <p className="flex">
               <em>energy efficiency and use</em>
@@ -419,7 +419,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="3"
           aria-label="Waste"
-          startContent={<WasteIcon className="text-success" />}
+          startContent={<WasteIcon className={(trashPerWeek !== "") ? "text-success" : ""} />}
           subtitle={
             <p className="flex">
               <em>garbage and waste</em>
@@ -450,7 +450,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="4"
           aria-label="Other"
-          startContent={<OtherIcon className="text-success" />}
+          startContent={<OtherIcon className={(shoppingHabits.has("rarely") || shoppingHabits.has("sometimes") || shoppingHabits.has("often")) ? "text-success" : ""} />}
           subtitle={
             <p className="flex">
               <em>miscellaneous</em>
