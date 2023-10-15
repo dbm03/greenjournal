@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import { Accordion, AccordionItem, Selection } from "@nextui-org/react";
 import EnergyForm from "@/components/energy-card";
 
@@ -103,12 +103,6 @@ export const ManualSettings = () => {
   const [wasteTotal, setWasteTotal] = useState<number>(0);
   const [otherTotal, setOtherTotal] = useState<number>(0);
 
-  const calcTotal = () => {
-    setTotalMetricTons(
-      transportationTotal + energyTotal + wasteTotal + otherTotal
-    );
-  };
-
   // ==== Energy form state ====
   const [electricityBill, setElectricityBill] = useState<string>("");
   const [electricityBillUnit, setElectricityBillUnit] = useState<Selection>(
@@ -139,7 +133,15 @@ export const ManualSettings = () => {
   };
 
   const handleEnergySubmit = () => {};
-
+  const calcEnergy = () => {
+    setEnergyTotal(12 * (
+      (naturalGasUnit.has("dollars") ? 1/10.68 : 1) * 119.58 +
+      (fuelOilUnit.has("dollars") ? 1/4.02 : 1) * 22.61 +
+      (propaneUnit.has("gallons") ? 1/2.47 : 1) * 12.43 +
+      (isGreenEnergyHouse ? 0.5 : 1) * (electricityBillUnit.has("dollars") ? 1/0.1188 : 1) / 1000 * 1238.516 +
+      (isGreenEnergyHouse ? 0.5 : 1) * (electricityBillUnit.has("dollars") ? 1/0.1188 : 1) / 1000 * 727.603
+    )/2204.62)
+  }
   // ==== Other form state ====
   const [isVegetarian, setIsVegetarian] = useState<boolean>(false);
   const [lowFlowShowerhead, setLowFlowShowerhead] = useState<boolean>(false);
@@ -147,6 +149,20 @@ export const ManualSettings = () => {
   const [shoppingHabits, setShoppingHabits] = useState<Selection>(new Set([]));
   const [isRecycledProducts, setIsRecycledProducts] = useState<boolean>(false);
   const [isOrganicProduce, setIsOrganicProduce] = useState<boolean>(false);
+
+  const calcOther = () => {
+      setOtherTotal(
+        (
+          (shoppingHabits.has("rarely") ? 200 : 0) + 
+          (shoppingHabits.has("sometimes") ? 600 : 0) + 
+          (shoppingHabits.has("often") ? 1000 : 0) -
+          (isVegetarian ? 1200 : 0) -
+          (lowFlowShowerhead ? 350 : 0) -
+          (isVolunteer ? 500 : 0) -
+          (isRecycledProducts ? 500 : 0) -
+          (isOrganicProduce ? 500 : 0)
+        )/2204.62)
+  }
 
   // ==== Waste form state ====
   const [trashPerWeek, setTrashPerWeek] = useState<string>("");
@@ -160,6 +176,18 @@ export const ManualSettings = () => {
 
   const handleTrashPerWeek = (value: string) => {
     if (Number(value) >= 0) setTrashPerWeek(value);
+  };
+  const calcWaste = () => {
+    setWasteTotal(
+      (Number(trashPerWeek) * 52 * 3.02 - 
+      (recyclesAluminumSteelCans ? 89 : 0) - 
+      (recyclesPlastic ? 36 : 0) - 
+      (recyclesGlass ? 25 : 0) - 
+      (recyclesNewspaper ? 113 : 0) - 
+      (recyclesMagazines ? 27 : 0)
+      )
+      /2204.62
+    );
   };
 
   // ==== Transportation form state ====
@@ -187,6 +215,26 @@ export const ManualSettings = () => {
 
   const handleFlightsPerYear = (value: string) => {
     if (Number(value) >= 0) setFlightsPerYear(value);
+  };
+  const calcTransportation = () => {
+    setTransportationTotal(
+      ((isRegularVehicleMaintenance ? 191 : 0) + 
+      Number(milesPerWeekVehicle) * 52 / Number(milesPerGallon) * 19.6 * 1.01 / (isRegularVehicleMaintenance ? (1-0.04) : 1)+
+      Number(milesPerWeekPublicTransportation) * 52 * 14 / 100 + 
+      Number(flightsPerYear) * 90 * 3)
+      /2204.62
+    );
+  };
+
+  const calcTotal = () => {
+    calcEnergy();
+    calcWaste();
+    calcTransportation();
+    calcOther();
+    setTotalMetricTons(
+      transportationTotal + energyTotal + wasteTotal + otherTotal
+    );
+    console.log(totalMetricTons);
   };
 
   useEffect(() => {
@@ -243,7 +291,7 @@ export const ManualSettings = () => {
   }, []);
 
   return (
-    <div>
+    <div><Button onClick={calcTotal}>Click!</Button>
       <Accordion
         showDivider={false}
         className="flex flex-col w-full p-2"

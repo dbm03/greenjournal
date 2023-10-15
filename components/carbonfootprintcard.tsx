@@ -18,7 +18,7 @@ const CarbonFootPrintCard = ({ metricTons = 4.3 }) => {
         <h4 className="text-xl font-bold uppercase">Carbon Footprint</h4>
       </CardHeader>
       <CardBody style={noOverflow} className="flex flex-col items-center justify-center">
-        <span className="font-nova text-8xl">{metricTons}</span>
+        <span className="font-nova text-8xl text-success">{metricTons}</span>
         <p>metric tons</p>
       </CardBody>
     </Card>
