@@ -21,9 +21,10 @@ export default function Chat() {
   return (
     <div>
       <div style={margins}>
-      {messages.map((m) => (
+      {messages.map(m => (
         <div key={m.id}>
-          {m.role}: {m.content}
+          {m.role === 'user' ? 'User: ' : 'GreenAI: '}
+          {m.content}
         </div>
       ))}
       </div>
@@ -33,7 +34,7 @@ export default function Chat() {
           <Input label="Say something..." value={input} onChange={handleInputChange}/>
       </form>
       </div>
-      <Spacer y={15}/>
+      <Spacer y={16}/>
     </div>
   );
 }
