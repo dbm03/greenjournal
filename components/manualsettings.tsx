@@ -1,6 +1,6 @@
 "use client";
 import React, {useEffect} from "react";
-import { Accordion, AccordionItem, Selection } from "@nextui-org/react";
+import { Accordion, AccordionItem, Selection, Button } from "@nextui-org/react";
 import EnergyForm from "@/components/energy-card";
 
 import CSS from "csstype";
@@ -291,7 +291,7 @@ export const ManualSettings = () => {
   }, []);
 
   return (
-    <div><Button onClick={calcTotal}>Click!</Button>
+    <div>
       <Accordion
         showDivider={false}
         className="flex flex-col w-full p-2"
