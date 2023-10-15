@@ -23,7 +23,7 @@ export default function Chat() {
       <div style={margins}>
       {messages.map(m => (
         <div key={m.id}>
-          {m.role === 'user' ? 'User: ' : 'GreenAI: '}
+          {m.role === 'user' ? 'User: ' : 'Echo: '}
           {m.content}
         </div>
       ))}
@@ -34,7 +34,11 @@ export default function Chat() {
           <Input label="Say something..." value={input} onChange={handleInputChange}/>
       </form>
       </div>
+    
+<<<<<<< HEAD
       <Spacer/>
+=======
+>>>>>>> 983564d (better prompt engineering)
     </div>
   );
 }
