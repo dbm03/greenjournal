@@ -50,7 +50,7 @@ const EnergyForm = ({
               selectedKeys={naturalGasUnit}
               onSelectionChange={setNaturalGasUnit}
             >
-              <SelectItem key="cubic-feet">1000 Cubic Feet</SelectItem>
+              <SelectItem key="cubic-feet">Cubic Feet</SelectItem>
               <SelectItem key="dollars">Dollars</SelectItem>
             </Select>
           </div>

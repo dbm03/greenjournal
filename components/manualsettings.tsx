@@ -147,17 +147,17 @@ export const ManualSettings = () => {
   const handleEnergySubmit = () => {};
   let energyTotal =
     (12 *
-      ((naturalGasUnit.has("dollars") ? 1 / 10.68 : 1) * 119.58 +
-        (fuelOilUnit.has("dollars") ? 1 / 4.02 : 1) * 22.61 +
-        (propaneUnit.has("gallons") ? 1 / 2.47 : 1) * 12.43 +
+      ((naturalGasUnit.has("dollars") ? 1 / 10.68 : 1) * 119.58 * Number(naturalGas) /1000 +
+        (fuelOilUnit.has("dollars") ? 1 / 4.02 : 1) * 22.61 * Number(fuelOil) +
+        (propaneUnit.has("gallons") ? 1 / 2.47 : 1) * 12.43 * Number(propane) +
         (((isGreenEnergyHouse ? 0.5 : 1) *
           (electricityBillUnit.has("dollars") ? 1 / 0.1188 : 1)) /
           1000) *
-          1238.516 +
-        (((isGreenEnergyHouse ? 0.5 : 1) *
+          1238.516 * Number(electricityBill) +
+        (((isGreenEnergyHouse ? 0.5 : 0) *
           (electricityBillUnit.has("dollars") ? 1 / 0.1188 : 1)) /
           1000) *
-          727.603)) /
+          727.603 * Number(electricityBill))) /
     2204.62;
 
   // ==== Other form state ====
