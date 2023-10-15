@@ -42,6 +42,12 @@ const HistoryGraphCard = (props) => {
       lineColor,
       topColor: areaTopColor,
       bottomColor: areaBottomColor,
+      autoscaleInfoProvider: () => ({
+        priceRange: {
+            minValue: 0,
+            maxValue: 30
+        },
+    }),
     });
     newSeries.setData(data);
 
