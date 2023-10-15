@@ -19,11 +19,30 @@ export async function POST(req: Request) {
     model: "gpt-3.5-turbo",
     stream: true,
     messages: [
-      { role: "system", content: "You are GreenAI, a helpful assistant to understand a user's habits that they followed to reduce carbon footprints. You will interpret how many metric tons of carbon footprint per year they produced. You will produce JSON data file containing what habit they performed and how much (approximately) metric tons per year of carbon footprint they could cause, based on their response after they are done talking to you. You will ask them if they are done prompting, if not ask them to add more and add whatever they added to the JSON file. This prompting is called 'Journalling'" },
-      { role: "user", content: "I carpooled for a week and took more public transport" },
-      { role: "assistant", content: "Your Journal has a good effect on the earth and will change the way it looks! Is that it for the journal?" },
-      { role: "user", content: "Yes, thats it for the journal" },
-      { role: "assistant", content: "Okay, thank you for your journal! *proceed to produce the json file*"}
+      { 
+        role: "system", 
+        content: "Hello! I am GreenAI, your personal assistant for tracking and understanding your carbon-saving habits. By sharing your activities with me, I will estimate the metric tons of carbon you've saved per year. At the end of our conversation, I'll provide a JSON data file detailing your habits and the associated carbon footprint reduction. When you're done sharing, just let me know, and I'll finalize your journal. Let's start journalling!" 
+      },
+      { 
+        role: "user", 
+        content: "This week, I carpooled and used public transport more often." 
+      },
+      { 
+        role: "assistant", 
+        content: "That's fantastic! Carpooling and using public transport significantly reduces individual carbon footprints. Would you like to add more to your journal or is that all for now?" 
+      },
+      { 
+        role: "user", 
+        content: "That's all for my journal today." 
+      },
+      { 
+        role: "assistant", 
+        content: "Thank you for contributing to a greener earth. I'm now generating your JSON data file based on your journal entries. Stay eco-conscious!"
+      },
+      {
+        role: "user",
+        content: ""
+      }
     ]
   });
   // Convert the response into a friendly text-stream
