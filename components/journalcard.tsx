@@ -12,13 +12,14 @@ import { useState } from "react";
 import GreenAI from "./greenai";
 import { ManualSettings } from "./manualsettings";
 import CSS from "csstype";
+import { IconSparkles } from "./icons";
 
 const open: CSS.Properties = {
-  height:"100%",
-}
+  height: "100%",
+};
 const marginAdjust: CSS.Properties = {
-  marginTop:"10px",
-}
+  marginTop: "10px",
+};
 
 const JournalCard = () => {
   const [selected, setSelected] = useState<string>("manual");
@@ -57,7 +58,16 @@ const JournalCard = () => {
           style={marginAdjust}
         >
           <Tab key="manual" title="Manual"></Tab>
-          <Tab key="greenai" title="GreenAI"></Tab>
+          <Tab
+            key="greenai"
+            className=""
+            title={
+              <div className="flex items-center gap-1">
+                Echo
+                <IconSparkles />
+              </div>
+            }
+          ></Tab>
         </Tabs>
       </CardFooter>
     </Card>

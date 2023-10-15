@@ -12,16 +12,16 @@ import { mockStorageData } from "@/mocks";
 import { TotalMetricTonsContext } from "@/components/metrictonscontext";
 
 const initialData = [
-  { time: "2023-12-22", value: 10 },
-  { time: "2023-12-23", value: 6 },
-  { time: "2023-12-24", value: 12.02 },
-  { time: "2023-12-25", value: 15.32 },
-  { time: "2023-12-26", value: 10.17 },
-  { time: "2023-12-27", value: 7.89 },
-  { time: "2023-12-28", value: 16.46 },
-  { time: "2023-12-29", value: 14.92 },
-  { time: "2023-12-30", value: 15.68 },
-  { time: "2023-12-31", value: 5.67 },
+  { time: "2023-10-05", value: 10 },
+  { time: "2023-10-06", value: 6 },
+  { time: "2023-10-07", value: 12.02 },
+  { time: "2023-10-08", value: 15.32 },
+  { time: "2023-10-09", value: 10.17 },
+  { time: "2023-10-10", value: 7.89 },
+  { time: "2023-10-11", value: 16.46 },
+  { time: "2023-10-12", value: 14.92 },
+  { time: "2023-10-13", value: 15.68 },
+  { time: "2023-10-14", value: 5.67 },
 ];
 
 export default function Home() {
@@ -80,28 +80,6 @@ export default function Home() {
   const [flights, setFlights] = useState(0);
 
   return (
-    //  <section className="flex flex-1 flex-grow gap-4">
-    //    <div className="flex flex-col flex-1 gap-4">
-    //      <div className="flex flex-1 gap-4">
-    //        <EarthViewCard />
-    //        <div className="flex flex-col flex-1 gap-4">
-    //          <div>
-    //            <Comparison val1={50} val2={30} val3={70} val4={40} />
-    //          </div>
-    //          <div>
-    //            <CarbonFootPrintCard />
-    //          </div>
-    //        </div>
-    //      </div>
-    //      <div>
-    //        <HistoryGraphCard data={initialData} />
-    //      </div>
-    //    </div>
-    //    <div className="flex flex-1">
-    //      <JournalCard />
-    //    </div>
-    //  </section>
-
     <TotalMetricTonsContext.Provider
       value={{
         totalMetricTons,

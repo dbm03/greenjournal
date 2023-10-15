@@ -248,7 +248,6 @@ export const ManualSettings = () => {
     2204.62;
 
   const calcTotal = () => {
-    console.log("CALCULATING");
     setV1(transportationTotal);
     setV2(energyTotal);
     setV3(wasteTotal);
