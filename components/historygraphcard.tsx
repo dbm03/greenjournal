@@ -2,16 +2,17 @@
 
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { createChart, ColorType, LineStyle } from "lightweight-charts";
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import CSS from "csstype";
+import { TotalMetricTonsContext } from "./metrictonscontext";
 
 const hidden: CSS.Properties = {
   overflow: "hidden",
 };
 
 const HistoryGraphCard = (props) => {
+  const { graphData: data } = useContext(TotalMetricTonsContext);
   const {
-    data,
     colors: {
       backgroundColor = "transparent",
       lineColor = "rgba(0, 218, 106, 1)",

@@ -78,6 +78,7 @@ export default function Home() {
   const [v3, setV3] = useState(0);
   const [v4, setV4] = useState(0);
   const [flights, setFlights] = useState(0);
+  const [graphData, setGraphData] = useState(initialData);
 
   return (
     <TotalMetricTonsContext.Provider
@@ -94,6 +95,8 @@ export default function Home() {
         setV2,
         setV3,
         setV4,
+        graphData,
+        setGraphData,
       }}
     >
       <div className="grid grid-cols-10 max-h-[89vh] grid-rows-3 gap-4">
@@ -118,7 +121,7 @@ export default function Home() {
           <CarbonFootPrintCard />
         </div>
         <div className="col-span-6 row-start-3 ">
-          <HistoryGraphCard data={initialData} />
+          <HistoryGraphCard />
         </div>
       </div>
     </TotalMetricTonsContext.Provider>

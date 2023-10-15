@@ -5,6 +5,8 @@ export const TotalMetricTonsContext = createContext({
   flights: 0,
   setFlights: (value: number) => {},
   setTotalMetricTons: (value: number) => {},
+  graphData: [],
+  setGraphData: (value: any) => {},
   v1: 0,
   setV1: (value: number) => {},
   v2: 0,

@@ -18,6 +18,18 @@ import { localStorageSchema } from "@/mocks";
 import { useContext } from "react";
 import { TotalMetricTonsContext } from "./metrictonscontext";
 
+function formatDate(date) {
+  var d = new Date(date),
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-");
+}
+
 export interface WasteFormProps {
   trashPerWeek: string;
   setTrashPerWeek: (value: string) => void;
@@ -92,6 +104,8 @@ export const ManualSettings = () => {
     totalMetricTons,
     setFlights,
     setTotalMetricTons,
+    graphData,
+    setGraphData,
     v1,
     setV1,
     v2,
@@ -248,6 +262,15 @@ export const ManualSettings = () => {
     2204.62;
 
   const calcTotal = () => {
+    if (graphData[graphData.length - 1].time !== formatDate(new Date())) {
+      setGraphData([
+        ...graphData,
+        {
+          time: formatDate(new Date()),
+          value: transportationTotal + energyTotal + wasteTotal + otherTotal,
+        },
+      ]);
+    }
     setV1(transportationTotal);
     setV2(energyTotal);
     setV3(wasteTotal);
