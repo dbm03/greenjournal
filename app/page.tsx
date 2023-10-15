@@ -127,9 +127,9 @@ export default function Home() {
         <div className="col-span-2 col-start-5 row-span-1 row-start-1 ">
           <Comparison
             val1={100 - v1 * 10}
-            val2={100 - v2 * 10}
-            val3={100 - v3 * 10}
-            val4={100 - v4 * 10}
+            val2={100 - v2 * 5}
+            val3={100 - v3 * 30}
+            val4={100 - v4 * 250}
           />
         </div>
         <div className="col-span-2 col-start-5 row-span-1 row-start-2 ">
