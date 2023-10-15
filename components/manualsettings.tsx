@@ -13,10 +13,10 @@ import { CarIcon } from "./CarIcon.jsx";
 import { EnergyIcon } from "./EnergyIcon.jsx";
 import { WasteIcon } from "./WasteIcon.jsx";
 import { OtherIcon } from "./OtherIcon.jsx";
-import { localStorageSchema } from "@/app/page";
+import { localStorageSchema } from "@/mocks";
 
 import { useContext } from "react";
-import { TotalMetricTonsContext } from "@/app/page";
+import { TotalMetricTonsContext } from "./metrictonscontext";
 
 export interface WasteFormProps {
   trashPerWeek: string;
@@ -84,7 +84,6 @@ export interface EnergyFormProps {
   setPropane: (value: string) => void;
   propaneUnit: Selection;
   setPropaneUnit: (value: Selection) => void;
-  submitForm: () => void;
   update: () => void;
 }
 
@@ -144,7 +143,6 @@ export const ManualSettings = () => {
     if (Number(value) >= 0) setPropane(value);
   };
 
-  const handleEnergySubmit = () => {};
   let energyTotal =
     (12 *
       ((naturalGasUnit.has("dollars") ? 1 / 10.68 : 1) * 119.58 +
@@ -159,6 +157,8 @@ export const ManualSettings = () => {
           1000) *
           727.603)) /
     2204.62;
+
+  console.log(energyTotal);
 
   // ==== Other form state ====
   const [isVegetarian, setIsVegetarian] = useState<boolean>(false);
@@ -239,6 +239,7 @@ export const ManualSettings = () => {
     2204.62;
 
   const calcTotal = () => {
+    console.log("CALCULATING");
     setV1(transportationTotal);
     setV2(energyTotal);
     setV3(wasteTotal);
@@ -350,7 +351,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="1"
           aria-label="Transportation"
-          startContent={<CarIcon className={(milesPerWeekVehicle !== "" && milesPerGallon !== "" && milesPerWeekPublicTransportation !== "" && flightsPerYear != "") ? "text-success" : ""} />}
+          startContent={<CarIcon className="text-success" />}
           subtitle={
             <p className="flex">
               <em>driving and traveling</em>
@@ -382,7 +383,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="2"
           aria-label="Home Energy"
-          startContent={<EnergyIcon className={(electricityBill !== "" && naturalGas !== "" && fuelOil !== "" && propane !== "") ? "text-success" : ""} />}
+          startContent={<EnergyIcon className="text-success" />}
           subtitle={
             <p className="flex">
               <em>energy efficiency and use</em>
@@ -411,7 +412,6 @@ export const ManualSettings = () => {
               setPropane={handlePropane}
               propaneUnit={propaneUnit}
               setPropaneUnit={setPropaneUnit}
-              submitForm={handleEnergySubmit}
               update={calcTotal}
             />
           </div>
@@ -419,7 +419,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="3"
           aria-label="Waste"
-          startContent={<WasteIcon className={(trashPerWeek !== "") ? "text-success" : ""} />}
+          startContent={<WasteIcon className="text-success" />}
           subtitle={
             <p className="flex">
               <em>garbage and waste</em>
@@ -450,7 +450,7 @@ export const ManualSettings = () => {
         <AccordionItem
           key="4"
           aria-label="Other"
-          startContent={<OtherIcon className={(shoppingHabits.has("rarely") || shoppingHabits.has("sometimes") || shoppingHabits.has("often")) ? "text-success" : ""} />}
+          startContent={<OtherIcon className="text-success" />}
           subtitle={
             <p className="flex">
               <em>miscellaneous</em>

@@ -4,7 +4,6 @@ import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import Globe from "./globe";
-import GltfModel from "./gtflModel";
 
 const EarthViewCard = () => {
   return (

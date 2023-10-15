@@ -27,8 +27,7 @@ const EnergyForm = ({
   setPropane,
   propaneUnit,
   setPropaneUnit,
-  submitForm,
-  update
+  update,
 }: EnergyFormProps) => {
   return (
     <div className="px-2 py-4 w-full min-w-[375px]">
@@ -123,7 +122,7 @@ const EnergyForm = ({
             </Select>
           </div>
         </div>
-        <Button color="success" onSubmit={submitForm} onClick={update}>
+        <Button color="success" onClick={update}>
           Save Changes
         </Button>
       </div>
