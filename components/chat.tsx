@@ -81,7 +81,7 @@ export default function Chat() {
       <div className="flex flex-col items-center justify-center gap-1">
         <form onSubmit={handleSubmit} className="w-full px-3">
           <Input
-            label="Say something..."
+            label="Type your entry..."
             value={input}
             onChange={handleInputChange}
           />
