@@ -44,10 +44,10 @@ const HistoryGraphCard = (props) => {
       bottomColor: areaBottomColor,
       autoscaleInfoProvider: () => ({
         priceRange: {
-            minValue: 0,
-            maxValue: 30
+          minValue: 0,
+          maxValue: 30,
         },
-    }),
+      }),
     });
     newSeries.setData(data);
 
@@ -56,7 +56,7 @@ const HistoryGraphCard = (props) => {
 
     var avgUSALine = {
       price: 16,
-      color: "#dc8565",
+      color: "#a29faa",
       lineWidth: 2,
       lineStyle: LineStyle.Solid,
       axisLabelVisible: true,
