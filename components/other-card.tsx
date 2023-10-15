@@ -20,6 +20,7 @@ const OtherForm = ({
   setShoppingHabits,
   isOrganicProduce,
   setIsOrganicProduce,
+  update
 }: OtherFormProps) => {
   return (
     <div className="px-2 py-4 w-full min-w-[375px]">
@@ -79,7 +80,7 @@ const OtherForm = ({
           </Checkbox>
           <Spacer />
         </div>
-        <Button color="success">Save Changes</Button>
+        <Button color="success" onClick={update}>Save Changes</Button>
       </div>
     </div>
   );

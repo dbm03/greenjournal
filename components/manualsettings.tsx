@@ -15,6 +15,9 @@ import { WasteIcon } from "./WasteIcon.jsx";
 import { OtherIcon } from "./OtherIcon.jsx";
 import { localStorageSchema } from "@/app/page";
 
+import {useContext} from "react";
+import {TotalMetricTonsContext} from "@/app/page";
+
 export interface WasteFormProps {
   trashPerWeek: string;
   setTrashPerWeek: (value: string) => void;
@@ -30,6 +33,7 @@ export interface WasteFormProps {
   setRecyclesNewspaper: (value: boolean) => void;
   recyclesMagazines: boolean;
   setRecyclesMagazines: (value: boolean) => void;
+  update: () => void;
 }
 export interface TransportationFormProps {
   isRegularVehicleMaintenance: boolean;
@@ -42,6 +46,7 @@ export interface TransportationFormProps {
   setMilesPerWeekPublicTransportation: (value: string) => void;
   flightsPerYear: string;
   setFlightsPerYear: (value: string) => void;
+  update: () => void;
 }
 
 export interface OtherFormProps {
@@ -57,6 +62,7 @@ export interface OtherFormProps {
   setIsRecycledProducts: (value: boolean) => void;
   isOrganicProduce: boolean;
   setIsOrganicProduce: (value: boolean) => void;
+  update: () => void;
 }
 
 export interface EnergyFormProps {
@@ -79,9 +85,11 @@ export interface EnergyFormProps {
   propaneUnit: Selection;
   setPropaneUnit: (value: Selection) => void;
   submitForm: () => void;
+  update: () => void;
 }
 
 export const ManualSettings = () => {
+  const {totalMetricTons, setTotalMetricTons} = useContext(TotalMetricTonsContext);
   const itemClasses = {
     base: "py-0 w-full",
     title: "font-normal text-medium",
@@ -97,7 +105,6 @@ export const ManualSettings = () => {
   };
 
   // ==== Output Variables ====
-  const [totalMetricTons, setTotalMetricTons] = useState<number>(0);
   const [transportationTotal, setTransportationTotal] = useState<number>(0);
   const [energyTotal, setEnergyTotal] = useState<number>(0);
   const [wasteTotal, setWasteTotal] = useState<number>(0);
@@ -231,12 +238,12 @@ export const ManualSettings = () => {
     calcWaste();
     calcTransportation();
     calcOther();
+    console.log(transportationTotal + energyTotal + wasteTotal + otherTotal);
     setTotalMetricTons(
       transportationTotal + energyTotal + wasteTotal + otherTotal
     );
     console.log(totalMetricTons);
   };
-
   useEffect(() => {
     // get from local storage all state variables
 
@@ -292,6 +299,7 @@ export const ManualSettings = () => {
 
   return (
     <div>
+      <Button onClick={calcTotal}>Click</Button>
       <Accordion
         showDivider={false}
         className="flex flex-col w-full p-2"
@@ -365,6 +373,7 @@ export const ManualSettings = () => {
               }
               flightsPerYear={flightsPerYear}
               setFlightsPerYear={handleFlightsPerYear}
+              update={calcTotal}
             />
           </div>
         </AccordionItem>
@@ -401,6 +410,7 @@ export const ManualSettings = () => {
               propaneUnit={propaneUnit}
               setPropaneUnit={setPropaneUnit}
               submitForm={handleEnergySubmit}
+              update={calcTotal}
             />
           </div>
         </AccordionItem>
@@ -431,6 +441,7 @@ export const ManualSettings = () => {
               setRecyclesNewspaper={setRecyclesNewspaper}
               recyclesMagazines={recyclesMagazines}
               setRecyclesMagazines={setRecyclesMagazines}
+              update={calcTotal}
             />
           </div>
         </AccordionItem>
@@ -460,6 +471,7 @@ export const ManualSettings = () => {
               setIsRecycledProducts={setIsRecycledProducts}
               isOrganicProduce={isOrganicProduce}
               setIsOrganicProduce={setIsOrganicProduce}
+              update={calcTotal}
             />
           </div>
         </AccordionItem>

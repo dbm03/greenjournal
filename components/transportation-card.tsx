@@ -12,6 +12,7 @@ const TransportationForm = ({
   setMilesPerWeekPublicTransportation,
   flightsPerYear,
   setFlightsPerYear,
+  update
 }: TransportationFormProps) => {
   return (
     <div className="px-2 py-4 w-full  min-w-[375px]">
@@ -68,7 +69,7 @@ const TransportationForm = ({
             </div>
           </div>
         </div>
-        <Button color="success">Save Changes</Button>
+        <Button color="success" onClick={update}>Save Changes</Button>
       </div>
     </div>
   );

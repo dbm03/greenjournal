@@ -16,6 +16,7 @@ const WasteForm = ({
   setRecyclesNewspaper,
   recyclesMagazines,
   setRecyclesMagazines,
+  update
 }: WasteFormProps) => {
   return (
     <div className="px-2 py-4 w-full  min-w-[375px]">
@@ -82,7 +83,7 @@ const WasteForm = ({
             Magazines
           </Checkbox>
         </div>
-        <Button color="success">Save Changes</Button>
+        <Button color="success" onClick={update}>Save Changes</Button>
       </div>
     </div>
   );
