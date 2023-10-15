@@ -46,7 +46,7 @@ const Tips = () => {
       style={stretch}
     >
       <CardHeader className="flex justify-center">
-        <h4 className="text-xl font-bold uppercase">Journal</h4>
+        <h4 className="text-xl font-bold uppercase">Entries</h4>
       </CardHeader>
       <CardBody>
         <div className="flex flex-col gap-4">

@@ -7,6 +7,8 @@ import {
   CardHeader,
   Progress,
   Spacer,
+  Tooltip,
+  Button
 } from "@nextui-org/react";
 import { CarIcon } from "./CarIcon.jsx";
 import { EnergyIcon } from "./EnergyIcon.jsx";
@@ -35,8 +37,13 @@ const Comparison: FC<CompProps> = ({ val1, val2, val3, val4 }) => {
       shadow="sm"
       className="h-full border-none backdrop-blur-[2px] border-neutral-600 bg-background/60 dark:bg-default-700/10"
     >
-      <CardHeader className="flex justify-center text-xl font-bold uppercase">
-        <h4>Comparison</h4>
+      <CardHeader className="flex justify-center gap-2">
+        <h4 className="text-xl font-bold uppercase">Breakdown</h4>
+        <Tooltip showArrow={true} placement="right" content={
+          <div className="max-w-[200px]">The farther the bar extends, the closer you are to living an environmentally conscious life.</div>
+      }>
+      <p>ⓘ</p>
+    </Tooltip>
       </CardHeader>
       <div
         style={margins}
