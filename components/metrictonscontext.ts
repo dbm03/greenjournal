@@ -2,6 +2,8 @@ import { createContext } from "react";
 
 export const TotalMetricTonsContext = createContext({
   totalMetricTons: 0,
+  flights: 0,
+  setFlights: (value: number) => {},
   setTotalMetricTons: (value: number) => {},
   v1: 0,
   setV1: (value: number) => {},

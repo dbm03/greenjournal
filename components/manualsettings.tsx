@@ -90,6 +90,7 @@ export interface EnergyFormProps {
 export const ManualSettings = () => {
   const {
     totalMetricTons,
+    setFlights,
     setTotalMetricTons,
     v1,
     setV1,
@@ -145,17 +146,22 @@ export const ManualSettings = () => {
 
   let energyTotal =
     (12 *
-      ((naturalGasUnit.has("dollars") ? 1 / 10.68 : 1) * 119.58 * Number(naturalGas) /1000 +
+      (((naturalGasUnit.has("dollars") ? 1 / 10.68 : 1) *
+        119.58 *
+        Number(naturalGas)) /
+        1000 +
         (fuelOilUnit.has("dollars") ? 1 / 4.02 : 1) * 22.61 * Number(fuelOil) +
         (propaneUnit.has("gallons") ? 1 / 2.47 : 1) * 12.43 * Number(propane) +
         (((isGreenEnergyHouse ? 0.5 : 1) *
           (electricityBillUnit.has("dollars") ? 1 / 0.1188 : 1)) /
           1000) *
-          1238.516 * Number(electricityBill) +
+          1238.516 *
+          Number(electricityBill) +
         (((isGreenEnergyHouse ? 0.5 : 0) *
           (electricityBillUnit.has("dollars") ? 1 / 0.1188 : 1)) /
           1000) *
-          727.603 * Number(electricityBill))) /
+          727.603 *
+          Number(electricityBill))) /
     2204.62;
 
   console.log(energyTotal);
@@ -225,7 +231,10 @@ export const ManualSettings = () => {
   };
 
   const handleFlightsPerYear = (value: string) => {
-    if (Number(value) >= 0) setFlightsPerYear(value);
+    if (Number(value) >= 0) {
+      setFlightsPerYear(value);
+      setFlights(Number(value)); // context flights
+    }
   };
 
   let transportationTotal =
@@ -351,7 +360,18 @@ export const ManualSettings = () => {
         <AccordionItem
           key="1"
           aria-label="Transportation"
-          startContent={<CarIcon className={(milesPerWeekVehicle !== "" && milesPerGallon !== "" && milesPerWeekPublicTransportation !== "" && flightsPerYear != "") ? "text-success" : ""} />}
+          startContent={
+            <CarIcon
+              className={
+                milesPerWeekVehicle !== "" &&
+                milesPerGallon !== "" &&
+                milesPerWeekPublicTransportation !== "" &&
+                flightsPerYear != ""
+                  ? "text-success"
+                  : ""
+              }
+            />
+          }
           subtitle={
             <p className="flex">
               <em>driving and traveling</em>
@@ -383,7 +403,18 @@ export const ManualSettings = () => {
         <AccordionItem
           key="2"
           aria-label="Home Energy"
-          startContent={<EnergyIcon className={(electricityBill !== "" && naturalGas !== "" && fuelOil !== "" && propane !== "") ? "text-success" : ""} />}
+          startContent={
+            <EnergyIcon
+              className={
+                electricityBill !== "" &&
+                naturalGas !== "" &&
+                fuelOil !== "" &&
+                propane !== ""
+                  ? "text-success"
+                  : ""
+              }
+            />
+          }
           subtitle={
             <p className="flex">
               <em>energy efficiency and use</em>
@@ -419,7 +450,9 @@ export const ManualSettings = () => {
         <AccordionItem
           key="3"
           aria-label="Waste"
-          startContent={<WasteIcon className={(trashPerWeek !== "") ? "text-success" : ""} />}
+          startContent={
+            <WasteIcon className={trashPerWeek !== "" ? "text-success" : ""} />
+          }
           subtitle={
             <p className="flex">
               <em>garbage and waste</em>
@@ -450,7 +483,17 @@ export const ManualSettings = () => {
         <AccordionItem
           key="4"
           aria-label="Other"
-          startContent={<OtherIcon className={(shoppingHabits.has("rarely") || shoppingHabits.has("sometimes") || shoppingHabits.has("often")) ? "text-success" : ""} />}
+          startContent={
+            <OtherIcon
+              className={
+                shoppingHabits.has("rarely") ||
+                shoppingHabits.has("sometimes") ||
+                shoppingHabits.has("often")
+                  ? "text-success"
+                  : ""
+              }
+            />
+          }
           subtitle={
             <p className="flex">
               <em>miscellaneous</em>

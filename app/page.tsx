@@ -77,6 +77,8 @@ export default function Home() {
   const [v2, setV2] = useState(0);
   const [v3, setV3] = useState(0);
   const [v4, setV4] = useState(0);
+  const [flights, setFlights] = useState(0);
+
   return (
     //  <section className="flex flex-1 flex-grow gap-4">
     //    <div className="flex flex-col flex-1 gap-4">
@@ -104,6 +106,8 @@ export default function Home() {
       value={{
         totalMetricTons,
         setTotalMetricTons,
+        flights,
+        setFlights,
         v1,
         v2,
         v3,
