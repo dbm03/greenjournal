@@ -270,6 +270,14 @@ export const ManualSettings = () => {
           value: transportationTotal + energyTotal + wasteTotal + otherTotal,
         },
       ]);
+    } else {
+      setGraphData([
+        ...graphData.slice(0, graphData.length - 1),
+        {
+          time: formatDate(new Date()),
+          value: transportationTotal + energyTotal + wasteTotal + otherTotal,
+        },
+      ]);
     }
     setV1(transportationTotal);
     setV2(energyTotal);
